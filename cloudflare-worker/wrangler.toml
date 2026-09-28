@@ -1,0 +1,6 @@
+name = "babycakes-rsvp-api"
+main = "worker.js"
+compatibility_date = "2026-09-29"
+
+[vars]
+GITHUB_REPO = "diosalumiere1730-creator/babycakes-rsvp"
