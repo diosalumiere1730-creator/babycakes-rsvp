@@ -19,15 +19,21 @@ export default {
     try {
       const body = await request.json();
       const allowedAttendance = ["yes", "no", "maybe"];
-      const allowedOrigins = ["Metro Manila", "Bicol Region", "Caluya / Antique", "Other"];
+      const allowedRegions = [
+        "Metro Manila",
+        "Bicol Region",
+        "Caluya / Antique",
+        "Elsewhere in the Philippines",
+        "Outside the Philippines"
+      ];
 
       const name = String(body.name || "").trim().slice(0, 120);
       const attendance = String(body.attendance || "").trim();
-      const partySize = Math.max(1, Math.min(20, Number.parseInt(body.partySize, 10) || 1));
-      const origin = String(body.origin || "").trim();
-      const note = String(body.note || "").trim().slice(0, 500);
+      const party = String(body.party || "").trim();
+      const region = String(body.region || "").trim();
+      const notes = String(body.notes || "").trim().slice(0, 500);
 
-      if (!name || !allowedAttendance.includes(attendance) || !allowedOrigins.includes(origin)) {
+      if (!name || !allowedAttendance.includes(attendance) || !allowedRegions.includes(region) || !["1","2","3","4","5+"].includes(party)) {
         return json({ error: "Please provide valid RSVP details." }, 400);
       }
 
@@ -37,9 +43,9 @@ export default {
         submittedAt: new Date().toISOString(),
         name,
         attendance,
-        partySize,
-        origin,
-        note
+        party,
+        region,
+        notes
       };
 
       const path = `data/rsvps/${new Date().toISOString().slice(0,10)}-${id}.json`;
