@@ -5,6 +5,7 @@
   const menu = document.querySelector(".menu-button");
   const nav = document.querySelector(".mobile-nav");
   const storageKey = "babycakes-prelim-rsvp-v1";
+  const apiUrl = "https://babycakes-rsvp-api.diosalumiere1730.workers.dev/";
 
   const showSaved = () => {
     form.hidden = true;
@@ -39,13 +40,48 @@
     menu.setAttribute("aria-expanded", "false");
   }));
 
-  form?.addEventListener("submit", event => {
+  form?.addEventListener("submit", async event => {
     event.preventDefault();
+
     const data = Object.fromEntries(new FormData(form).entries());
-    data.savedAt = new Date().toISOString();
-    localStorage.setItem(storageKey, JSON.stringify(data));
-    showSaved();
-    document.querySelector("#rsvp")?.scrollIntoView({behavior:"smooth"});
+    const submit = form.querySelector(".submit-button");
+    const originalText = submit?.innerHTML;
+    if (submit) {
+      submit.disabled = true;
+      submit.innerHTML = "Sending RSVP…";
+    }
+
+    try {
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+          name: data.name,
+          attendance: data.attendance,
+          party: data.party,
+          region: data.region,
+          notes: data.notes
+        })
+      });
+
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.ok) {
+        throw new Error(result.error || "Unable to save RSVP.");
+      }
+
+      data.savedAt = new Date().toISOString();
+      data.submissionId = result.id;
+      localStorage.setItem(storageKey, JSON.stringify(data));
+      showSaved();
+      document.querySelector("#rsvp")?.scrollIntoView({behavior:"smooth"});
+    } catch (_) {
+      alert("We couldn't save your RSVP right now. Please try again.");
+    } finally {
+      if (submit) {
+        submit.disabled = false;
+        submit.innerHTML = originalText;
+      }
+    }
   });
 
   edit?.addEventListener("click", () => {
