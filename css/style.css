@@ -57,3 +57,51 @@ section { box-sizing:border-box; }
 }
 
 @media(max-width:700px){.hero{width:100% !important;min-width:0 !important;max-width:none !important;align-self:stretch !important;}}
+
+
+/* Editorial mobile typography — scale text to match full-size photography */
+@media (max-width:700px){
+  body{font-size:18px;line-height:1.55}
+  .phase-pill{font-size:11px;letter-spacing:.14em}
+  .menu-button{font-size:12px}
+  .eyebrow{font-size:12px;line-height:1.45;letter-spacing:.16em;margin-bottom:24px}
+  .hero h1{font-size:clamp(58px,17vw,92px);line-height:.84;letter-spacing:-.045em;max-width:92vw}
+  .hero-copy{font-size:17px;line-height:1.5;max-width:85vw;margin-top:30px}
+  .scroll-cue{font-size:11px;letter-spacing:.13em}
+  .section{padding:90px 24px}
+  .section-label{font-size:12px;letter-spacing:.17em;margin-bottom:42px}
+  .display{font-size:clamp(48px,12vw,70px);line-height:.94}
+  .body-copy{font-size:17px;line-height:1.6;max-width:none}
+  .body-copy p{margin-bottom:22px}
+  .photo-frame figcaption{font-size:10px;line-height:1.35;padding:9px 11px}
+  .destination-head{gap:32px}
+  .destination .body-copy{font-size:17px}
+  .card-copy{padding:38px 28px}
+  .card-copy .small-kicker,.small-kicker{font-size:11px;letter-spacing:.16em}
+  .card-copy h2{font-size:48px}
+  .card-copy p{font-size:16px;line-height:1.55}
+  .timeline-item{grid-template-columns:48px 1fr;gap:16px;padding:38px 0}
+  .timeline-number{font-size:34px}
+  .timeline-item h3{font-size:42px;line-height:.98;margin:10px 0 14px}
+  .timeline-item p{font-size:16px;line-height:1.55}
+  .stay-intro{gap:32px}
+  .stay-list{margin-top:48px}
+  .stay-list>div{font-size:17px;padding:19px 0}
+  .capacity-note strong{font-size:44px}
+  .capacity-note span{font-size:11px;line-height:1.4}
+  .souvenir-grid{grid-template-columns:1fr}
+  .souvenir{min-height:190px;padding:28px 22px}
+  .souvenir span{font-size:11px}
+  .souvenir h3{font-size:34px;margin:28px 0 10px}
+  .souvenir p{font-size:15px;line-height:1.5}
+  .rsvp-head{gap:32px}
+  .rsvp-note{font-size:16px;line-height:1.55}
+  .rsvp-form label,.rsvp-form legend{font-size:11px;letter-spacing:.14em;padding-top:28px}
+  .rsvp-form input[type=text],.rsvp-form select,.rsvp-form textarea{font-size:17px;padding:12px 0 16px}
+  .choice{font-size:17px!important;padding:18px 0!important}
+  .submit-button{font-size:11px;padding:20px 18px}
+  .privacy-note{font-size:11px;line-height:1.5}
+  .rsvp-success h2{font-size:60px}
+  .rsvp-success p{font-size:17px}
+  footer{font-size:10px;line-height:1.5}
+}
