@@ -12,3 +12,46 @@ footer{padding:28px 8vw;background:#062333;color:#8ba7af;display:flex;justify-co
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}.reveal.visible{opacity:1;transform:none}
 @media(max-width:700px){main{width:100%;max-width:100%}.hero{width:100%;min-width:100%;max-width:100%;min-height:100svh}.topbar{padding:0 18px}.phase-pill{font-size:8px}.hero{padding:100px 22px 65px}.hero h1{font-size:clamp(52px,16vw,86px)}.hero-orb{width:70vw;height:70vw;right:-25vw;top:17%}.scroll-cue{left:22px}.section{padding:78px 22px}.section-label{margin-bottom:35px}.story-grid,.destination-head,.stay-intro,.rsvp-head,.destination-card{grid-template-columns:1fr;gap:35px}.media-placeholder.tall{min-height:55vh}.destination-card{display:block}.destination-photo{min-height:300px}.destination-photo img{min-height:300px}.card-copy{min-height:300px}.timeline-item{grid-template-columns:45px 1fr;gap:12px}.timeline-item h3{font-size:34px}.souvenir-grid{grid-template-columns:1fr 1fr}.souvenir{min-height:180px;padding:24px 18px}.souvenir h3{font-size:25px;margin-top:25px}.stay-list{margin-top:45px}.capacity-note{display:block}.capacity-note span{display:block}.rsvp-form{margin-top:20px}footer{display:block;padding:25px 22px}footer p{margin:6px 0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+
+
+/* Mobile full-viewport layout correction */
+html, body { width:100%; min-width:0; overflow-x:hidden; }
+main { display:block !important; width:100% !important; max-width:none !important; min-width:0 !important; }
+section { box-sizing:border-box; }
+@media (max-width:700px) {
+  .hero {
+    display:flex !important;
+    position:relative !important;
+    width:100vw !important;
+    max-width:100vw !important;
+    min-width:100vw !important;
+    height:100svh !important;
+    min-height:100svh !important;
+    max-height:none !important;
+    margin:0 !important;
+    padding:100px 22px 65px !important;
+    overflow:hidden !important;
+  }
+  .hero-photo {
+    position:absolute !important;
+    inset:0 !important;
+    width:100% !important;
+    height:100% !important;
+    min-width:100% !important;
+    min-height:100% !important;
+    background-size:cover !important;
+    background-position:center center !important;
+  }
+  .hero h1 { max-width:88vw !important; }
+  .story, .destination, .week, .stay, .souvenirs, .rsvp {
+    width:100vw !important;
+    max-width:100vw !important;
+    min-width:100vw !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+  }
+  .photo-frame, .destination-photo, .week-photo, .detail-photo {
+    width:100% !important;
+    max-width:100% !important;
+  }
+}
