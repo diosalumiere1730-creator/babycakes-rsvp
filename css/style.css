@@ -1087,3 +1087,77 @@ html:not(.js) .menu-button{display:none}
 .rsvp-success #edit-rsvp:hover{background:rgba(243,238,229,.1)}
 .success-mark{display:grid;place-items:center;width:54px;height:54px;margin:0 auto;border:1px solid rgba(243,238,229,.55);border-radius:50%;font-size:20px;color:#e8c992}
 @media(max-width:700px){.rsvp-success{padding:48px 24px 0}.rsvp-success p{font-size:16px}}
+
+
+/* Coastal motion gallery — three lightweight moving picture layers */
+.motion-sunset,
+.motion-wave,
+.motion-shells{
+  position:absolute;
+  pointer-events:none;
+  user-select:none;
+  z-index:0;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+  will-change:transform,background-position;
+}
+.motion-sunset{
+  inset:0;
+  opacity:.34;
+  background-image:url("https://images.unsplash.com/photo-1769540209420-f137f98194e8?auto=format&fit=crop&w=1800&q=78");
+  background-size:112%;
+  mix-blend-mode:screen;
+  animation:coastalSunsetDrift 18s ease-in-out infinite alternate;
+}
+.motion-wave{
+  width:145%;
+  height:46%;
+  left:-22%;
+  bottom:-8%;
+  border-radius:50%;
+  opacity:.30;
+  background-image:url("https://images.unsplash.com/photo-1557944062-ab5f2a286f92?auto=format&fit=crop&w=1800&q=78");
+  background-size:120% auto;
+  background-position:0 50%;
+  filter:saturate(.78) contrast(.95);
+  animation:coastalWaveFlow 13s ease-in-out infinite alternate;
+}
+.motion-shells{
+  width:62%;
+  height:58%;
+  right:-14%;
+  bottom:-16%;
+  opacity:.24;
+  background-image:url("https://images.unsplash.com/photo-1733394540544-551e188224cc?auto=format&fit=crop&w=1800&q=78");
+  background-size:125% auto;
+  background-position:50% 100%;
+  mix-blend-mode:multiply;
+  transform:rotate(-7deg);
+  animation:coastalShellDrift 16s ease-in-out infinite alternate;
+}
+.hero-content,
+.destination-card > *,
+.destination-card .card-copy,
+.souvenirs > :not(.motion-shells):not(.souvenir-sun){position:relative;z-index:1}
+
+@keyframes coastalSunsetDrift{
+  0%{transform:scale(1.04) translate3d(-1.5%,0,0);background-position:48% 50%}
+  100%{transform:scale(1.12) translate3d(1.5%,1%,0);background-position:54% 46%}
+}
+@keyframes coastalWaveFlow{
+  0%{transform:translate3d(-3%,2%,0) rotate(-1deg);background-position:0 50%}
+  100%{transform:translate3d(3%,-2%,0) rotate(1deg);background-position:100% 48%}
+}
+@keyframes coastalShellDrift{
+  0%{transform:rotate(-7deg) translate3d(0,2%,0) scale(1)}
+  100%{transform:rotate(-4deg) translate3d(-4%,-3%,0) scale(1.06)}
+}
+@media(max-width:700px){
+  .motion-sunset{opacity:.25;background-size:145%;animation-duration:22s}
+  .motion-wave{width:190%;left:-45%;height:38%;opacity:.24;animation-duration:15s}
+  .motion-shells{width:90%;right:-30%;opacity:.18;animation-duration:18s}
+}
+@media(prefers-reduced-motion:reduce){
+  .motion-sunset,.motion-wave,.motion-shells{animation:none;will-change:auto}
+}
