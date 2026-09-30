@@ -1088,141 +1088,91 @@ html:not(.js) .menu-button{display:none}
 .success-mark{display:grid;place-items:center;width:54px;height:54px;margin:0 auto;border:1px solid rgba(243,238,229,.55);border-radius:50%;font-size:20px;color:#e8c992}
 @media(max-width:700px){.rsvp-success{padding:48px 24px 0}.rsvp-success p{font-size:16px}}
 
-
-/* Coastal motion gallery — three lightweight moving picture layers */
-.motion-sunset,
-.motion-wave,
-.motion-shells{
+/* Cinematic coastal video layers — real stock footage */
+.video-film{
   position:absolute;
+  overflow:hidden;
   pointer-events:none;
   user-select:none;
   z-index:0;
-  background-repeat:no-repeat;
-  background-position:center;
-  background-size:cover;
-  will-change:transform,background-position;
-}
-.motion-sunset{
-  inset:0;
-  opacity:.34;
-  background-image:url("https://images.unsplash.com/photo-1769540209420-f137f98194e8?auto=format&fit=crop&w=1800&q=78");
-  background-size:112%;
-  mix-blend-mode:screen;
-  animation:coastalSunsetDrift 18s ease-in-out infinite alternate;
-}
-.motion-wave{
-  width:145%;
-  height:46%;
-  left:-22%;
-  bottom:-8%;
-  border-radius:50%;
-  opacity:.30;
-  background-image:url("https://images.unsplash.com/photo-1557944062-ab5f2a286f92?auto=format&fit=crop&w=1800&q=78");
-  background-size:120% auto;
-  background-position:0 50%;
-  filter:saturate(.78) contrast(.95);
-  animation:coastalWaveFlow 13s ease-in-out infinite alternate;
-}
-.motion-shells{
-  width:62%;
-  height:58%;
-  right:-14%;
-  bottom:-16%;
+  border-radius:0;
   opacity:.24;
-  background-image:url("https://images.unsplash.com/photo-1733394540544-551e188224cc?auto=format&fit=crop&w=1800&q=78");
-  background-size:125% auto;
-  background-position:50% 100%;
-  mix-blend-mode:multiply;
-  transform:rotate(-7deg);
-  animation:coastalShellDrift 16s ease-in-out infinite alternate;
-}
-.hero-content,
-.destination-card > *,
-.destination-card .card-copy,
-.souvenirs > :not(.motion-shells):not(.souvenir-sun){position:relative;z-index:1}
-
-@keyframes coastalSunsetDrift{
-  0%,100%{transform:scale(1.04) translate3d(-1.5%,0,0);background-position:48% 50%}
-  50%{transform:scale(1.12) translate3d(1.5%,1%,0);background-position:54% 46%}
-}
-@keyframes coastalWaveFlow{
-  0%,100%{transform:translate3d(-3%,2%,0) rotate(-1deg);background-position:0 50%}
-  50%{transform:translate3d(3%,-2%,0) rotate(1deg);background-position:100% 48%}
-}
-@keyframes coastalShellDrift{
-  0%,100%{transform:rotate(-7deg) translate3d(0,2%,0) scale(1)}
-  50%{transform:rotate(-4deg) translate3d(-4%,-3%,0) scale(1.06)}
-}
-@media(max-width:700px){
-  .motion-sunset{opacity:.25;background-size:145%;animation-duration:22s}
-  .motion-wave{width:190%;left:-45%;height:38%;opacity:.24;animation-duration:15s}
-  .motion-shells{width:90%;right:-30%;opacity:.18;animation-duration:18s}
-}
-@media(prefers-reduced-motion:reduce){
-  .motion-sunset,.motion-wave,.motion-shells{animation:none;will-change:auto}
-}
-
-
-/* Additional live GIF film layers sourced from public GIPHY pages */
-.gif-film{
-  position:absolute;
-  pointer-events:none;
-  overflow:hidden;
-  z-index:0;
-  opacity:.18;
-  border-radius:50%;
-  filter:saturate(.82) contrast(.96);
   mix-blend-mode:soft-light;
+  filter:saturate(.78) contrast(.98);
 }
-.gif-film img{
+.video-film video{
   display:block;
   width:100%;
   height:100%;
   object-fit:cover;
-  transform:scale(1.08);
 }
-.gif-palms{
-  width:min(42vw,560px);
-  height:min(42vw,560px);
-  top:8%;
-  right:-14%;
-  animation:gifFloatA 20s ease-in-out infinite;
+.video-sunset{
+  inset:0;
+  opacity:.28;
+  mix-blend-mode:screen;
+  animation:videoSunsetDrift 24s ease-in-out infinite alternate;
 }
-.gif-shore{
-  width:min(48vw,640px);
-  height:min(34vw,450px);
-  left:-15%;
-  bottom:2%;
-  animation:gifFloatB 24s ease-in-out infinite;
+.video-palms{
+  width:min(46vw,620px);
+  height:min(46vw,620px);
+  top:7%;
+  right:-15%;
+  opacity:.20;
+  border-radius:50%;
+  animation:videoFloatA 22s ease-in-out infinite alternate;
 }
-.gif-sunset{
-  width:min(52vw,700px);
-  height:min(34vw,460px);
-  right:-17%;
-  top:15%;
-  animation:gifFloatC 28s ease-in-out infinite;
+.video-foam{
+  width:145%;
+  height:46%;
+  left:-22%;
+  bottom:-8%;
+  opacity:.22;
+  border-radius:50%;
+  mix-blend-mode:screen;
+  animation:videoFoamFlow 15s ease-in-out infinite alternate;
 }
-@keyframes gifFloatA{
-  0%,100%{transform:translate3d(0,0,0) rotate(-2deg);opacity:.13}
-  50%{transform:translate3d(-3%,4%,0) rotate(2deg);opacity:.22}
+.video-horizon{
+  width:68%;
+  height:42%;
+  left:-16%;
+  top:18%;
+  opacity:.16;
+  border-radius:50%;
+  animation:videoFloatB 26s ease-in-out infinite alternate;
 }
-@keyframes gifFloatB{
-  0%,100%{transform:translate3d(0,2%,0) rotate(1deg);opacity:.12}
-  50%{transform:translate3d(4%,-3%,0) rotate(-2deg);opacity:.20}
+.hero-content,
+.destination-card > *,
+.destination-card .card-copy,
+.story > *:not(.video-film),
+.week > *:not(.video-film),
+.rsvp > *:not(.video-film),
+.souvenirs > :not(.motion-shells):not(.souvenir-sun){
+  position:relative;
+  z-index:1;
 }
-@keyframes gifFloatC{
-  0%,100%{transform:translate3d(0,0,0) scale(1);opacity:.12}
-  50%{transform:translate3d(-3%,3%,0) scale(1.04);opacity:.21}
+@keyframes videoSunsetDrift{
+  0%,100%{transform:scale(1.04) translate3d(-1%,0,0)}
+  50%{transform:scale(1.10) translate3d(1.5%,1%,0)}
 }
-.story > *:not(.gif-film),
-.week > *:not(.gif-film),
-.rsvp > *:not(.gif-film){position:relative;z-index:1}
+@keyframes videoFloatA{
+  0%,100%{transform:translate3d(0,0,0) rotate(-2deg)}
+  50%{transform:translate3d(-3%,4%,0) rotate(2deg)}
+}
+@keyframes videoFoamFlow{
+  0%,100%{transform:translate3d(-2%,2%,0) rotate(-1deg)}
+  50%{transform:translate3d(3%,-2%,0) rotate(1deg)}
+}
+@keyframes videoFloatB{
+  0%,100%{transform:translate3d(0,2%,0)}
+  50%{transform:translate3d(4%,-3%,0)}
+}
 @media(max-width:700px){
-  .gif-film{opacity:.12}
-  .gif-palms{width:72vw;height:72vw;right:-28%}
-  .gif-shore{width:82vw;height:54vw;left:-30%}
-  .gif-sunset{width:88vw;height:58vw;right:-32%}
+  .video-sunset{opacity:.22}
+  .video-palms{width:76vw;height:76vw;right:-30%;opacity:.14}
+  .video-foam{width:190%;left:-45%;height:38%;opacity:.17}
+  .video-horizon{width:94%;height:48%;left:-34%;opacity:.11}
 }
 @media(prefers-reduced-motion:reduce){
-  .gif-film{animation:none}
+  .video-film{animation:none}
+  .video-film video{visibility:hidden}
 }
