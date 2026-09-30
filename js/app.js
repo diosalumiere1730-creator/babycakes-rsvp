@@ -6,7 +6,7 @@
   const menu = document.querySelector(".menu-button");
   const nav = document.querySelector(".mobile-nav");
   const storageKey = "babycakes-prelim-rsvp-v1";
-  const apiUrl = "https://babycakes-rsvp-api.diosalumiere1730-creator.workers.dev/";
+  const apiUrl = "https://babycakes-rsvp-api.diosalumiere1730.workers.dev/";
   const requestTimeout = 15000;
   let lastFocused = null;
 
@@ -21,9 +21,7 @@
     form.hidden = true;
     success.hidden = false;
     setStatus("");
-    if (focus) {
-      requestAnimationFrame(() => success.focus());
-    }
+    if (focus) requestAnimationFrame(() => success.focus());
   };
 
   const restore = () => {
@@ -52,9 +50,7 @@
     nav?.setAttribute("aria-hidden", "true");
     nav?.setAttribute("inert", "");
     menu?.setAttribute("aria-expanded", "false");
-    if (restoreFocus && lastFocused) {
-      requestAnimationFrame(() => lastFocused.focus());
-    }
+    if (restoreFocus && lastFocused) requestAnimationFrame(() => lastFocused.focus());
   };
 
   nav?.setAttribute("aria-hidden", "true");
@@ -120,19 +116,14 @@
       });
 
       const result = await response.json().catch(() => ({}));
-      if (!response.ok || !result.ok) {
-        throw new Error(result.error || "Unable to save RSVP.");
-      }
+      if (!response.ok || !result.ok) throw new Error(result.error || "Unable to save RSVP.");
 
       data.savedAt = new Date().toISOString();
       data.submissionId = result.id;
 
       let remembered = true;
-      try {
-        localStorage.setItem(storageKey, JSON.stringify(data));
-      } catch (_) {
-        remembered = false;
-      }
+      try { localStorage.setItem(storageKey, JSON.stringify(data)); }
+      catch (_) { remembered = false; }
 
       setStatus(
         remembered ? "Saved. Thank you." : "Saved. Thank you. This device couldn't remember the response.",
