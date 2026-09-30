@@ -1142,16 +1142,16 @@ html:not(.js) .menu-button{display:none}
 .souvenirs > :not(.motion-shells):not(.souvenir-sun){position:relative;z-index:1}
 
 @keyframes coastalSunsetDrift{
-  0%{transform:scale(1.04) translate3d(-1.5%,0,0);background-position:48% 50%}
-  100%{transform:scale(1.12) translate3d(1.5%,1%,0);background-position:54% 46%}
+  0%,100%{transform:scale(1.04) translate3d(-1.5%,0,0);background-position:48% 50%}
+  50%{transform:scale(1.12) translate3d(1.5%,1%,0);background-position:54% 46%}
 }
 @keyframes coastalWaveFlow{
-  0%{transform:translate3d(-3%,2%,0) rotate(-1deg);background-position:0 50%}
-  100%{transform:translate3d(3%,-2%,0) rotate(1deg);background-position:100% 48%}
+  0%,100%{transform:translate3d(-3%,2%,0) rotate(-1deg);background-position:0 50%}
+  50%{transform:translate3d(3%,-2%,0) rotate(1deg);background-position:100% 48%}
 }
 @keyframes coastalShellDrift{
-  0%{transform:rotate(-7deg) translate3d(0,2%,0) scale(1)}
-  100%{transform:rotate(-4deg) translate3d(-4%,-3%,0) scale(1.06)}
+  0%,100%{transform:rotate(-7deg) translate3d(0,2%,0) scale(1)}
+  50%{transform:rotate(-4deg) translate3d(-4%,-3%,0) scale(1.06)}
 }
 @media(max-width:700px){
   .motion-sunset{opacity:.25;background-size:145%;animation-duration:22s}
