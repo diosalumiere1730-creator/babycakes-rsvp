@@ -6,7 +6,9 @@
   const menu = document.querySelector(".menu-button");
   const nav = document.querySelector(".mobile-nav");
   const storageKey = "babycakes-prelim-rsvp-v1";
-  const apiUrl = "https://babycakes-rsvp-api.diosalumiere1730.workers.dev/";
+  const apiUrl = "https://babycakes-rsvp-api.diosalumiere1730-creator.workers.dev/";
+  const requestTimeout = 15000;
+  let lastFocused = null;
 
   const setStatus = (message, state = "") => {
     if (!status) return;
@@ -14,11 +16,14 @@
     status.dataset.state = state;
   };
 
-  const showSaved = () => {
+  const showSaved = (focus = false) => {
     if (!form || !success) return;
     form.hidden = true;
     success.hidden = false;
     setStatus("");
+    if (focus) {
+      requestAnimationFrame(() => success.focus());
+    }
   };
 
   const restore = () => {
@@ -38,34 +43,49 @@
       });
       showSaved();
     } catch (_) {
-      localStorage.removeItem(storageKey);
+      try { localStorage.removeItem(storageKey); } catch (_) {}
+    }
+  };
+
+  const closeNav = (restoreFocus = false) => {
+    nav?.classList.remove("open");
+    nav?.setAttribute("aria-hidden", "true");
+    nav?.setAttribute("inert", "");
+    menu?.setAttribute("aria-expanded", "false");
+    if (restoreFocus && lastFocused) {
+      requestAnimationFrame(() => lastFocused.focus());
     }
   };
 
   nav?.setAttribute("aria-hidden", "true");
-
-  const closeNav = () => {
-    nav?.classList.remove("open");
-    nav?.setAttribute("aria-hidden", "true");
-    menu?.setAttribute("aria-expanded", "false");
-  };
+  nav?.setAttribute("inert", "");
 
   menu?.addEventListener("click", () => {
     const open = nav?.classList.toggle("open") ?? false;
     nav?.setAttribute("aria-hidden", String(!open));
-    menu.setAttribute("aria-expanded", String(open));
+    if (open) {
+      nav?.removeAttribute("inert");
+      lastFocused = document.activeElement;
+      menu.setAttribute("aria-expanded", "true");
+      requestAnimationFrame(() => nav?.querySelector("a")?.focus());
+    } else {
+      closeNav();
+    }
   });
 
-  nav?.querySelectorAll("a").forEach(link => link.addEventListener("click", closeNav));
+  nav?.querySelectorAll("a").forEach(link => link.addEventListener("click", () => closeNav()));
 
   document.addEventListener("click", event => {
     if (!nav?.classList.contains("open")) return;
     if (nav.contains(event.target) || menu?.contains(event.target)) return;
-    closeNav();
+    closeNav(true);
   });
 
   document.addEventListener("keydown", event => {
-    if (event.key === "Escape") closeNav();
+    if (event.key === "Escape" && nav?.classList.contains("open")) {
+      event.preventDefault();
+      closeNav(true);
+    }
   });
 
   form?.addEventListener("submit", async event => {
@@ -75,6 +95,8 @@
     const data = Object.fromEntries(new FormData(form).entries());
     const submit = form.querySelector(".submit-button");
     const originalText = submit?.innerHTML;
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), requestTimeout);
 
     if (submit) {
       submit.disabled = true;
@@ -93,7 +115,8 @@
           party: data.party,
           region: data.region,
           notes: data.notes
-        })
+        }),
+        signal: controller.signal
       });
 
       const result = await response.json().catch(() => ({}));
@@ -103,13 +126,27 @@
 
       data.savedAt = new Date().toISOString();
       data.submissionId = result.id;
-      localStorage.setItem(storageKey, JSON.stringify(data));
-      setStatus("Saved. Thank you.", "success");
-      showSaved();
+
+      let remembered = true;
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(data));
+      } catch (_) {
+        remembered = false;
+      }
+
+      setStatus(
+        remembered ? "Saved. Thank you." : "Saved. Thank you. This device couldn't remember the response.",
+        "success"
+      );
+      showSaved(true);
       document.querySelector("#rsvp")?.scrollIntoView({behavior: "smooth", block: "start"});
-    } catch (_) {
-      setStatus("We couldn't save your RSVP right now. Please check your connection and try again.", "error");
+    } catch (error) {
+      const message = error?.name === "AbortError"
+        ? "Saving took too long. Please check your connection and try again."
+        : "We couldn't save your RSVP right now. Please check your connection and try again.";
+      setStatus(message, "error");
     } finally {
+      clearTimeout(timeoutId);
       if (submit) {
         submit.disabled = false;
         submit.removeAttribute("aria-busy");
