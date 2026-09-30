@@ -1073,3 +1073,10 @@ button:disabled{cursor:wait;opacity:.72}
 @media (prefers-reduced-motion:reduce){.hero-orb{animation:none}.mobile-nav{transition:none}}
 
 .mobile-nav{visibility:hidden}
+
+section[id]{scroll-margin-top:78px}
+.hero h1,.display,h2,h3{ text-wrap:balance }
+@media(max-width:700px){
+  .stay,.souvenirs,.rsvp{background-attachment:scroll}
+  section[id]{scroll-margin-top:68px}
+}
