@@ -42,6 +42,8 @@
     }
   };
 
+  nav?.setAttribute("aria-hidden", "true");
+
   const closeNav = () => {
     nav?.classList.remove("open");
     nav?.setAttribute("aria-hidden", "true");
