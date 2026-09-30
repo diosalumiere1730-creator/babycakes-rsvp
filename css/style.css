@@ -1194,3 +1194,212 @@ html:not(.js) .menu-button{display:none}
 .media-credits summary{cursor:pointer;color:#a7bdc2;font-size:8px;letter-spacing:.12em;text-transform:uppercase}
 .media-credits p{margin:7px 0 0}
 @media(max-width:700px){.media-credits{grid-column:2;max-width:none;margin-top:2px}.media-credits summary{font-size:8px}}
+
+
+/* PHASE 1 — Cinematic foundation: unify the invitation into one visual film */
+:root{
+  --film-blue:#08283a;
+  --film-ocean:#164d63;
+  --film-sky:#d98f73;
+  --film-paper:#f4eee3;
+  --film-warm:#ead7b7;
+  --film-ink:#173847;
+  --film-speed-slow:26s;
+  --film-speed-medium:18s;
+}
+
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:78px;
+}
+
+body{
+  background:var(--film-paper);
+  color:var(--film-ink);
+}
+
+main{
+  background:var(--film-paper);
+}
+
+/* Keep the visual vocabulary quiet: atmosphere first, ornament second. */
+.hero-orb{
+  opacity:.52;
+  width:min(28vw,390px);
+  height:min(28vw,390px);
+}
+
+.hero-rings{
+  opacity:.10;
+  height:24%;
+  bottom:-7%;
+}
+
+.hero:after{
+  opacity:.08;
+}
+
+.video-film{
+  filter:saturate(.72) contrast(.97);
+}
+
+.video-sunset{
+  opacity:.22;
+  mix-blend-mode:screen;
+  animation-duration:var(--film-speed-slow);
+}
+
+.video-palms{
+  opacity:.15;
+  animation-duration:32s;
+}
+
+.video-foam{
+  opacity:.20;
+  animation-duration:20s;
+}
+
+.video-horizon{
+  opacity:.12;
+  animation-duration:34s;
+}
+
+/* Give each chapter a deliberate visual hand-off. */
+.story-transition{
+  position:relative;
+  height:110px;
+  background:
+    linear-gradient(180deg,#f4eee3 0%,#e8e3d8 100%);
+  overflow:hidden;
+}
+
+.story-transition:before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:28px;
+  background:linear-gradient(180deg,rgba(8,40,58,.07),transparent);
+}
+
+.story-transition span{
+  background:rgba(23,56,71,.14);
+}
+
+.story-transition i{
+  color:#60747b;
+}
+
+/* Calm the section backgrounds so photography and motion carry the story. */
+.story{
+  background:
+    linear-gradient(rgba(248,244,235,.80),rgba(248,244,235,.80)),
+    url("https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?auto=format&fit=crop&w=1800&q=82") center/cover fixed;
+}
+
+.week{
+  background:
+    linear-gradient(rgba(245,239,227,.82),rgba(245,239,227,.82)),
+    url("https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?auto=format&fit=crop&w=1800&q=82") center/cover fixed;
+}
+
+.stay{
+  background:
+    linear-gradient(rgba(225,231,226,.76),rgba(225,231,226,.76)),
+    url("https://images.unsplash.com/photo-1764370699188-15ac87e00bbb?auto=format&fit=crop&w=1800&q=82") center/cover fixed;
+}
+
+.souvenirs{
+  background:
+    linear-gradient(rgba(245,237,220,.76),rgba(245,237,220,.76)),
+    url("https://images.unsplash.com/photo-1733394540544-551e188224cc?auto=format&fit=crop&w=1800&q=82") center/cover fixed;
+}
+
+.rsvp{
+  background:
+    linear-gradient(rgba(5,47,64,.76),rgba(5,47,64,.76)),
+    url("https://images.unsplash.com/photo-1557944062-ab5f2a286f92?auto=format&fit=crop&w=1800&q=82") center/cover fixed;
+}
+
+/* Editorial reveal: slow enough to feel like a film, never like a UI animation. */
+.js .reveal{
+  opacity:0;
+  transform:translate3d(0,26px,0);
+  transition:
+    opacity 1.15s cubic-bezier(.2,.7,.2,1),
+    transform 1.15s cubic-bezier(.2,.7,.2,1);
+}
+
+.js .reveal.visible{
+  opacity:1;
+  transform:none;
+}
+
+.js .reveal:nth-of-type(2){transition-delay:.03s}
+.js .reveal:nth-of-type(3){transition-delay:.06s}
+
+/* Reduce the “card grid” feeling in the narrative sections. */
+.destination .card-copy{
+  background:rgba(5,36,49,.54);
+  border-color:rgba(241,246,236,.22);
+  box-shadow:0 14px 38px rgba(2,25,38,.13);
+}
+
+.souvenir{
+  box-shadow:none;
+}
+
+/* A restrained transition into the final RSVP chapter. */
+.rsvp{
+  border-top:1px solid rgba(232,199,146,.16);
+}
+
+footer{
+  border-top:1px solid rgba(139,167,175,.16);
+}
+
+/* Motion must disappear cleanly when the visitor asks for reduced motion. */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-photo,
+  .hero-orb,
+  .video-film,
+  .js .reveal{
+    animation:none;
+    transition:none;
+  }
+  .js .reveal{
+    opacity:1;
+    transform:none;
+  }
+}
+
+/* Mobile: keep the film quiet and avoid decorative competition. */
+@media(max-width:700px){
+  .hero-orb{
+    opacity:.34;
+    width:62vw;
+    height:62vw;
+    right:-18vw;
+  }
+
+  .hero-rings{
+    opacity:.06;
+    height:20%;
+  }
+
+  .video-sunset{opacity:.17}
+  .video-palms{opacity:.11}
+  .video-foam{opacity:.16}
+  .video-horizon{opacity:.09}
+
+  .story-transition{
+    height:82px;
+  }
+
+  .js .reveal{
+    transform:translate3d(0,18px,0);
+    transition-duration:.9s;
+  }
+}
