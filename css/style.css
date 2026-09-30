@@ -336,3 +336,204 @@ section { box-sizing:border-box; }
   .hero-photo{animation:none}
   .hero-orb{animation:none}
 }
+
+
+/* Story — linen, letterpress, and intimate portrait treatment */
+.story{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:
+    linear-gradient(rgba(248,244,235,.72),rgba(248,244,235,.72)),
+    url("https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?auto=format&fit=crop&w=2200&q=86") center/cover fixed;
+}
+.story:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 12% 18%,rgba(255,255,255,.72),transparent 24%),
+    linear-gradient(90deg,rgba(255,255,255,.18),transparent 40%,rgba(214,194,157,.10));
+}
+.story:after{
+  content:"";
+  position:absolute;
+  left:6vw;
+  right:6vw;
+  bottom:34px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(23,56,71,.22),transparent);
+}
+.story-wash{
+  position:absolute;
+  width:320px;
+  height:320px;
+  right:-120px;
+  top:70px;
+  border:1px solid rgba(205,184,137,.45);
+  border-radius:50%;
+  box-shadow:0 0 0 28px rgba(255,255,255,.08),0 0 0 56px rgba(205,184,137,.06);
+  pointer-events:none;
+}
+.story-ornament{
+  position:absolute;
+  right:9vw;
+  top:105px;
+  color:var(--gold);
+  font-size:18px;
+  opacity:.78;
+}
+.story .section-label{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  color:#6a766f;
+}
+.story .section-label:after{
+  content:"";
+  width:70px;
+  height:1px;
+  background:rgba(23,56,71,.2);
+}
+.story-grid{
+  position:relative;
+  z-index:1;
+}
+.story .display{
+  max-width:900px;
+  text-wrap:balance;
+}
+.story .display em{
+  font-style:italic;
+  color:#7c9aa0;
+}
+.story-kicker{
+  display:block;
+  margin-bottom:16px;
+  color:#7b776d;
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+.story .body-copy{
+  color:#465650;
+}
+.story .body-copy p:first-of-type{
+  font-size:16px;
+  line-height:1.75;
+}
+.story .photo-frame{
+  z-index:1;
+  min-height:68vh;
+  margin:90px 5vw 25px;
+  border:0;
+  box-shadow:0 18px 45px rgba(21,51,61,.12);
+  background:#d9d0c0;
+}
+.story .photo-frame:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  border:1px solid rgba(255,255,255,.46);
+}
+.story .photo-frame-border{
+  position:absolute;
+  inset:18px;
+  z-index:2;
+  pointer-events:none;
+  border:1px solid rgba(255,248,230,.56);
+}
+.story .photo-frame img{
+  filter:saturate(.72) contrast(1.02) sepia(.05);
+  transform:scale(1.025);
+  transition:transform 1.2s cubic-bezier(.2,.7,.2,1);
+}
+.story .photo-frame:hover img{
+  transform:scale(1.045);
+}
+.story .photo-frame figcaption{
+  z-index:3;
+  left:30px;
+  bottom:29px;
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  background:rgba(6,35,51,.74);
+  padding:10px 13px;
+  letter-spacing:.12em;
+}
+.story .photo-frame figcaption small{
+  font-size:8px;
+  opacity:.68;
+  letter-spacing:.1em;
+}
+.story-transition{
+  height:95px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  background:#f4eee3;
+  color:#71838a;
+}
+.story-transition span{
+  width:min(20vw,160px);
+  height:1px;
+  background:rgba(23,56,71,.18);
+}
+.story-transition i{
+  font-family:var(--serif);
+  font-style:normal;
+  font-size:13px;
+  letter-spacing:.2em;
+}
+@media(max-width:700px){
+  .story{
+    background-attachment:scroll;
+  }
+  .story-ornament{
+    right:24px;
+    top:91px;
+  }
+  .story-wash{
+    width:210px;
+    height:210px;
+    right:-105px;
+    top:80px;
+  }
+  .story .section-label:after{
+    width:45px;
+  }
+  .story-kicker{
+    font-size:11px;
+    margin-bottom:13px;
+  }
+  .story .body-copy p:first-of-type{
+    font-size:17px;
+  }
+  .story .photo-frame{
+    min-height:66vh;
+    margin:65px 0 20px;
+  }
+  .story .photo-frame-border{
+    inset:12px;
+  }
+  .story .photo-frame figcaption{
+    left:20px;
+    right:20px;
+    bottom:20px;
+    display:block;
+  }
+  .story .photo-frame figcaption small{
+    display:block;
+    margin-top:4px;
+  }
+  .story-transition{
+    height:78px;
+  }
+}
