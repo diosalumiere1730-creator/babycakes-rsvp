@@ -44,11 +44,13 @@
 
   const closeNav = () => {
     nav?.classList.remove("open");
+    nav?.setAttribute("aria-hidden", "true");
     menu?.setAttribute("aria-expanded", "false");
   };
 
   menu?.addEventListener("click", () => {
     const open = nav?.classList.toggle("open") ?? false;
+    nav?.setAttribute("aria-hidden", String(!open));
     menu.setAttribute("aria-expanded", String(open));
   });
 
