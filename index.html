@@ -42,7 +42,7 @@
 <label>ESTIMATED NUMBER IN YOUR PARTY<select name="party" required><option value="">Select</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option></select></label>
 <label>WHERE WILL YOU BE TRAVELLING FROM?<select name="region" required><option value="">Select</option><option>Metro Manila</option><option>Bicol Region</option><option>Caluya / Antique</option><option>Elsewhere in the Philippines</option><option>Outside the Philippines</option></select></label>
 <label>ANYTHING WE SHOULD KNOW? <span class="optional">(optional)</span><textarea name="notes" rows="3" placeholder="A note for us…"></textarea></label>
-<button class="submit-button" type="submit">Save my preliminary RSVP <span>→</span></button><p class="privacy-note">This preliminary form is for planning purposes. Please don't include sensitive personal information.</p>
+<button class="submit-button" type="submit">Save my preliminary RSVP <span>→</span></button><p id="rsvp-status" class="form-status" role="status" aria-live="polite"></p><p class="privacy-note">This preliminary form is for planning purposes. Please don't include sensitive personal information.</p>
 </form>
 <div id="rsvp-success" class="rsvp-success" aria-live="polite" hidden><span class="success-mark">✓</span><h2>Thank you.</h2><p>Your preliminary RSVP has been submitted.</p><button type="button" id="edit-rsvp">Edit response</button></div>
 </section>
