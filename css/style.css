@@ -1049,9 +1049,6 @@ footer a{
 }
 img{max-width:100%}
 button:disabled{cursor:wait;opacity:.72}
-.hero-photo,.destination-photo img,.week-photo img,.detail-photo img{
-  will-change:transform;
-}
 @media(min-width:701px){
   .topbar{mix-blend-mode:normal;color:#f5eee2}
   .monogram{background:rgba(4,29,42,.18);backdrop-filter:blur(4px)}
@@ -1060,7 +1057,6 @@ button:disabled{cursor:wait;opacity:.72}
   .skip-link{left:12px;top:12px}
 }
 @media(prefers-reduced-motion:reduce){
-  .hero-photo,.destination-photo img,.story .photo-frame img{will-change:auto}
   .stay-list>div,.souvenir,.submit-button{transition:none}
 }
 
