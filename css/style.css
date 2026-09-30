@@ -1123,13 +1123,18 @@ html:not(.js) .menu-button{display:none}
 }
 .video-foam{
   width:145%;
-  height:46%;
+  height:52%;
   left:-22%;
   bottom:-8%;
-  opacity:.22;
+  opacity:.25;
   border-radius:50%;
   mix-blend-mode:screen;
   animation:videoFoamFlow 15s ease-in-out infinite alternate;
+}
+.video-foam video{
+  object-position:center bottom;
+  transform:scale(1.52) translate3d(0,8%,0);
+  transform-origin:center bottom;
 }
 .video-horizon{
   width:68%;
@@ -1146,7 +1151,7 @@ html:not(.js) .menu-button{display:none}
 .story > *:not(.video-film),
 .week > *:not(.video-film),
 .rsvp > *:not(.video-film),
-.souvenirs > :not(.motion-shells):not(.souvenir-sun){
+.souvenirs > :not(.souvenir-sun){
   position:relative;
   z-index:1;
 }
@@ -1169,7 +1174,8 @@ html:not(.js) .menu-button{display:none}
 @media(max-width:700px){
   .video-sunset{opacity:.22}
   .video-palms{width:76vw;height:76vw;right:-30%;opacity:.14}
-  .video-foam{width:190%;left:-45%;height:38%;opacity:.17}
+  .video-foam{width:205%;left:-52%;height:44%;opacity:.20}
+  .video-foam video{transform:scale(1.68) translate3d(0,10%,0);}
   .video-horizon{width:94%;height:48%;left:-34%;opacity:.11}
 }
 @media(prefers-reduced-motion:reduce){
