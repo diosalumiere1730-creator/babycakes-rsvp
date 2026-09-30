@@ -1080,3 +1080,6 @@ section[id]{scroll-margin-top:78px}
   .stay,.souvenirs,.rsvp{background-attachment:scroll}
   section[id]{scroll-margin-top:68px}
 }
+
+html:not(.js) .mobile-nav{position:static;opacity:1;visibility:visible;pointer-events:auto;transform:none;display:flex;flex-wrap:wrap;justify-content:center;margin:0;padding:12px 18px;border-width:0 0 1px;}
+html:not(.js) .menu-button{display:none}
