@@ -1062,3 +1062,11 @@ button:disabled{cursor:wait;opacity:.72}
   .hero-photo,.destination-photo img,.story .photo-frame img{will-change:auto}
   .stay-list>div,.souvenir,.submit-button{transition:none}
 }
+
+.form-status{min-height:1.5em;margin:12px 0 0;font-size:12px;letter-spacing:.01em;color:rgba(237,243,239,.78)}
+.form-status[data-state="pending"]{color:#d9e7e5}
+.form-status[data-state="success"]{color:#d7e7cf}
+.form-status[data-state="error"]{color:#ffd5cb}
+.submit-button[disabled]{cursor:wait;opacity:.72}
+.menu-button:focus-visible,.mobile-nav a:focus-visible,.submit-button:focus-visible,#edit-rsvp:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+@media (prefers-reduced-motion:reduce){.hero-orb{animation:none}.mobile-nav{transition:none}}
