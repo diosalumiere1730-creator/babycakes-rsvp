@@ -1403,3 +1403,10 @@ footer{
     transition-duration:.9s;
   }
 }
+
+
+/* PHASE 1 VIDEO VISIBILITY FIX — keep footage above still-image layers, below typography */
+.video-film{z-index:1!important;}
+.hero-photo,.story-wash,.destination-photo{z-index:0!important;}
+.hero-content,.hero-vignette,.scroll-cue,.destination-card .card-copy,.story > .story-ornament,.story > .section-label,.story > .story-grid,.story > .photo-frame,.week > .section-label,.week > .week-photo,.week > .timeline,.rsvp > .section-label,.rsvp > .rsvp-head,.rsvp > .rsvp-form,.rsvp > .rsvp-success{z-index:2;}
+@media(prefers-reduced-motion:reduce){.video-film{display:none;}}
