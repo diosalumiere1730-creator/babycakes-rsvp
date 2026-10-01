@@ -1434,3 +1434,20 @@ footer{
   .video-horizon video{opacity:.64!important;}
 }
 @media(prefers-reduced-motion:reduce){.video-film{display:none!important;}}
+
+
+/* EXTREME VIDEO VISIBILITY — footage is now a primary visual, not a texture */
+.video-film{opacity:1!important;mix-blend-mode:normal!important;filter:none!important;}
+.video-film video{opacity:1!important;filter:saturate(1.08) contrast(1.04)!important;}
+.video-sunset{opacity:1!important;}
+.video-palms{opacity:.98!important;}
+.video-foam{opacity:1!important;}
+.video-horizon{opacity:.96!important;}
+/* Preserve legibility with a very light content wash rather than dimming the footage. */
+.hero:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(5,31,44,.16),rgba(5,31,44,.04) 45%,rgba(5,31,44,.20));pointer-events:none;}
+.story-wash{opacity:.12!important;}
+@media(max-width:700px){
+  .video-film video{filter:saturate(1.04) contrast(1.03)!important;}
+  .video-palms{opacity:.94!important;}
+  .video-horizon{opacity:.92!important;}
+}
