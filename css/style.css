@@ -1410,3 +1410,27 @@ footer{
 .hero-photo,.story-wash,.destination-photo{z-index:0!important;}
 .hero-content,.hero-vignette,.scroll-cue,.destination-card .card-copy,.story > .story-ornament,.story > .section-label,.story > .story-grid,.story > .photo-frame,.week > .section-label,.week > .week-photo,.week > .timeline,.rsvp > .section-label,.rsvp > .rsvp-head,.rsvp > .rsvp-form,.rsvp > .rsvp-success{z-index:2;}
 @media(prefers-reduced-motion:reduce){.video-film{display:none;}}
+
+
+/* PHASE 1 VIDEO VISIBILITY — make selected footage a clear visual layer */
+.video-film{opacity:1!important;mix-blend-mode:normal!important;filter:saturate(.9) contrast(1)!important;}
+.video-film video{opacity:.72!important;}
+.video-sunset{opacity:.92!important;}
+.video-sunset video{opacity:.82!important;}
+.video-palms{opacity:.78!important;}
+.video-palms video{opacity:.74!important;}
+.video-foam{opacity:.82!important;}
+.video-foam video{opacity:.78!important;}
+.video-horizon{opacity:.74!important;}
+.video-horizon video{opacity:.70!important;}
+@media(max-width:700px){
+  .video-sunset{opacity:.86!important;}
+  .video-sunset video{opacity:.76!important;}
+  .video-palms{opacity:.72!important;}
+  .video-palms video{opacity:.68!important;}
+  .video-foam{opacity:.76!important;}
+  .video-foam video{opacity:.72!important;}
+  .video-horizon{opacity:.68!important;}
+  .video-horizon video{opacity:.64!important;}
+}
+@media(prefers-reduced-motion:reduce){.video-film{display:none!important;}}
