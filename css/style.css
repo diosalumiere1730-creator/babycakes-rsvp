@@ -1451,3 +1451,21 @@ footer{
   .video-palms{opacity:.94!important;}
   .video-horizon{opacity:.92!important;}
 }
+
+
+/* VIDEO LAYERS 2–4 — place footage above all section imagery and washes */
+.story .video-film,
+.destination .video-film,
+.week .video-film{z-index:12!important;opacity:1!important;visibility:visible!important;}
+.story .video-film video,
+.destination .video-film video,
+.week .video-film video{position:relative;z-index:13!important;opacity:1!important;visibility:visible!important;}
+.story-wash{z-index:1!important;}
+.destination-photo{z-index:1!important;}
+.week:before{z-index:0!important;}
+.story .section-label,.story .story-grid,.story .photo-frame,.story .story-ornament,
+.destination .section-label,.destination .destination-head,.destination .destination-photo,.destination .card-copy,
+.week .section-label,.week .week-photo,.week .timeline,.week .week-intro-mark{z-index:14!important;}
+@media(prefers-reduced-motion:reduce){
+  .story .video-film,.destination .video-film,.week .video-film{display:none!important;}
+}
