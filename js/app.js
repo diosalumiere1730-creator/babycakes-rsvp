@@ -201,7 +201,7 @@
       window.setTimeout(() => {
         gate.remove();
         document.querySelector("#top")?.focus?.({preventScroll:true});
-      }, 1700);
+      }, 9000);
     };
 
     envelopeTrigger.addEventListener("click", openInvitation);
