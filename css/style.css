@@ -1804,3 +1804,177 @@ footer{
     padding:76px 0 28px!important;
   }
 }
+
+
+/* OPENING ENVELOPE GATE — nothing behind it is visible until the invitation is opened */
+body.invitation-locked{
+  overflow:hidden!important;
+  height:100vh!important;
+}
+.envelope-gate{
+  position:fixed!important;
+  inset:0!important;
+  z-index:100000!important;
+  display:grid!important;
+  place-items:center!important;
+  background:#f4eee3!important;
+  color:#173847!important;
+  opacity:1!important;
+  visibility:visible!important;
+  transition:opacity 900ms cubic-bezier(.2,.7,.2,1),visibility 0s linear 900ms!important;
+}
+.envelope-gate.is-opening{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+.envelope-trigger{
+  appearance:none!important;
+  border:0!important;
+  background:none!important;
+  color:inherit!important;
+  width:min(86vw,520px)!important;
+  min-height:520px!important;
+  padding:28px!important;
+  cursor:pointer!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:10px!important;
+  font:inherit!important;
+  outline:none!important;
+}
+.envelope-trigger:focus-visible{
+  outline:2px solid rgba(23,56,71,.5)!important;
+  outline-offset:10px!important;
+}
+.envelope-stage{
+  position:relative!important;
+  width:min(78vw,430px)!important;
+  aspect-ratio:1.48!important;
+  display:block!important;
+  perspective:1000px!important;
+  margin-bottom:28px!important;
+}
+.envelope-shadow{
+  position:absolute!important;
+  width:82%!important;
+  height:18%!important;
+  left:9%!important;
+  bottom:-7%!important;
+  border-radius:50%!important;
+  background:rgba(23,56,71,.18)!important;
+  filter:blur(18px)!important;
+  transition:transform 800ms ease,opacity 800ms ease!important;
+}
+.envelope-paper{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  background:#e9dfcc!important;
+  border:1px solid rgba(23,56,71,.18)!important;
+  box-shadow:0 28px 65px rgba(23,56,71,.18),0 4px 12px rgba(23,56,71,.08)!important;
+  overflow:visible!important;
+  transform-style:preserve-3d!important;
+}
+.envelope-pocket{
+  position:absolute!important;
+  inset:auto 0 0 0!important;
+  height:76%!important;
+  background:linear-gradient(145deg,#f5ecdd,#dfd1b9)!important;
+  clip-path:polygon(0 0,50% 48%,100% 0,100% 100%,0 100%)!important;
+  z-index:3!important;
+}
+.envelope-pocket:before,
+.envelope-pocket:after{
+  content:""!important;
+  position:absolute!important;
+  top:0!important;
+  width:1px!important;
+  height:100%!important;
+  background:rgba(23,56,71,.11)!important;
+  transform-origin:top!important;
+}
+.envelope-pocket:before{left:0!important;transform:rotate(0deg)!important;}
+.envelope-pocket:after{right:0!important;}
+.envelope-flap{
+  position:absolute!important;
+  left:0!important;
+  top:0!important;
+  width:100%!important;
+  height:72%!important;
+  background:#f0e6d5!important;
+  clip-path:polygon(0 0,100% 0,50% 92%)!important;
+  transform-origin:50% 0!important;
+  transform:rotateX(0deg)!important;
+  transition:transform 950ms cubic-bezier(.2,.7,.2,1)!important;
+  backface-visibility:hidden!important;
+  z-index:5!important;
+  filter:drop-shadow(0 5px 5px rgba(23,56,71,.08))!important;
+}
+.envelope-seal{
+  position:absolute!important;
+  z-index:6!important;
+  left:50%!important;
+  top:50%!important;
+  transform:translate(-50%,-50%)!important;
+  width:62px!important;
+  height:62px!important;
+  border-radius:50%!important;
+  display:grid!important;
+  place-items:center!important;
+  background:#b99a6d!important;
+  color:#fff8ea!important;
+  font-family:"Cormorant Garamond",serif!important;
+  font-size:27px!important;
+  box-shadow:0 6px 18px rgba(23,56,71,.18)!important;
+  transition:transform 500ms ease,opacity 350ms ease!important;
+}
+.envelope-kicker{
+  font:500 10px/1.2 "DM Sans",sans-serif!important;
+  letter-spacing:.24em!important;
+  text-transform:uppercase!important;
+  opacity:.62!important;
+}
+.envelope-title{
+  font:500 clamp(28px,5vw,42px)/1 "Cormorant Garamond",serif!important;
+  margin-top:4px!important;
+}
+.envelope-hint{
+  font:500 10px/1.2 "DM Sans",sans-serif!important;
+  letter-spacing:.18em!important;
+  text-transform:uppercase!important;
+  opacity:.48!important;
+  margin-top:8px!important;
+}
+.envelope-trigger:hover .envelope-paper{
+  transform:translateY(-4px)!important;
+  box-shadow:0 34px 72px rgba(23,56,71,.20),0 5px 14px rgba(23,56,71,.08)!important;
+}
+.envelope-trigger:hover .envelope-shadow{transform:scale(.94)!important;opacity:.7!important;}
+.envelope-trigger:hover .envelope-seal{transform:translate(-50%,-50%) scale(1.04)!important;}
+.envelope-gate.is-opening .envelope-flap{
+  transform:rotateX(-178deg)!important;
+}
+.envelope-gate.is-opening .envelope-seal{
+  opacity:0!important;
+  transform:translate(-50%,-70%) scale(.7)!important;
+}
+.envelope-gate.is-opening .envelope-paper{
+  animation:envelope-lift 850ms cubic-bezier(.2,.7,.2,1) both!important;
+}
+@keyframes envelope-lift{
+  0%{transform:translateY(0) scale(1);}
+  55%{transform:translateY(-12px) scale(1.015);}
+  100%{transform:translateY(-18px) scale(.98);}
+}
+@media(max-width:700px){
+  .envelope-trigger{min-height:430px!important;padding:20px!important;}
+  .envelope-stage{width:min(84vw,360px)!important;margin-bottom:22px!important;}
+  .envelope-seal{width:54px!important;height:54px!important;font-size:24px!important;}
+}
+@media(prefers-reduced-motion:reduce){
+  .envelope-gate,.envelope-flap,.envelope-paper,.envelope-seal,.envelope-shadow{transition:none!important;}
+  .envelope-gate.is-opening .envelope-flap{transform:none!important;}
+}
