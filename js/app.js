@@ -191,6 +191,7 @@
     const openInvitation = () => {
       if (gate.classList.contains("is-opening")) return;
       gate.classList.add("is-opening");
+    envelopeTrigger.setAttribute("aria-disabled", "true");
       document.body.classList.remove("invitation-locked");
 
       protectedLayers.forEach(layer => {
@@ -205,7 +206,10 @@
       }, 2050);
     };
 
-    envelopeTrigger.addEventListener("click", openInvitation);
+    envelopeTrigger.addEventListener("click", event => {
+      event.preventDefault();
+      openInvitation();
+    });
     envelopeTrigger.addEventListener("keydown", event => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
