@@ -2957,3 +2957,40 @@ body .skip-link{
   opacity:1!important;
   transform:none!important;
 }
+
+
+/* STAY — let the illustrated map carry the story without repeating its text. */
+.stay{
+  padding-left:0!important;
+  padding-right:0!important;
+}
+.stay > .section-label{
+  margin-left:clamp(22px,7vw,110px)!important;
+  margin-right:clamp(22px,7vw,110px)!important;
+}
+.stay .stay-intro{
+  display:none!important;
+}
+.stay .caluya-map{
+  width:100vw!important;
+  max-width:none!important;
+  margin:34px 0 0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+.stay .caluya-map img{
+  width:100%!important;
+  max-width:none!important;
+  height:auto!important;
+  object-fit:contain!important;
+}
+@media(max-width:700px){
+  .stay > .section-label{
+    margin-left:22px!important;
+    margin-right:22px!important;
+  }
+  .stay .caluya-map{
+    width:100vw!important;
+    margin-top:24px!important;
+  }
+}
