@@ -172,9 +172,10 @@
   restore();
 
 
-  // Opening: use the supplied envelope artwork directly. No synthetic envelope.
+  // Intro video: the user's uploaded animation is the complete opening sequence.
   const gate = document.querySelector("#envelope-gate");
-  const envelopeTrigger = document.querySelector("#envelope-trigger");
+  const trigger = document.querySelector("#envelope-trigger");
+  const intro = document.querySelector("#opening-intro-video");
   const protectedLayers = [
     document.querySelector(".skip-link"),
     document.querySelector(".topbar"),
@@ -182,16 +183,17 @@
     document.querySelector("#top")
   ].filter(Boolean);
 
-  if (gate && envelopeTrigger) {
+  if (gate && trigger && intro) {
     protectedLayers.forEach(layer => {
       layer.setAttribute("inert", "");
       layer.setAttribute("aria-hidden", "true");
     });
 
-    const openInvitation = () => {
-      if (gate.classList.contains("is-opening")) return;
-      gate.classList.add("is-opening");
-      envelopeTrigger.setAttribute("aria-disabled", "true");
+    let opened = false;
+    const finish = () => {
+      if (opened) return;
+      opened = true;
+      gate.classList.add("is-complete");
       document.body.classList.remove("invitation-locked");
       protectedLayers.forEach(layer => {
         layer.removeAttribute("inert");
@@ -200,14 +202,27 @@
       window.setTimeout(() => {
         gate.remove();
         document.querySelector("#top")?.focus?.({preventScroll:true});
-      }, 1550);
+      }, 450);
     };
 
-    envelopeTrigger.addEventListener("click", openInvitation);
-    envelopeTrigger.addEventListener("keydown", event => {
+    const playIntro = async () => {
+      if (opened || gate.classList.contains("is-playing")) return;
+      gate.classList.add("is-playing");
+      trigger.setAttribute("aria-disabled", "true");
+      try {
+        await intro.play();
+      } catch (_) {
+        gate.classList.remove("is-playing");
+        trigger.removeAttribute("aria-disabled");
+      }
+    };
+
+    intro.addEventListener("ended", finish);
+    trigger.addEventListener("click", playIntro);
+    trigger.addEventListener("keydown", event => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-        openInvitation();
+        playIntro();
       }
     });
   }
