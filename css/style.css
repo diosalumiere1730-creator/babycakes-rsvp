@@ -1545,3 +1545,38 @@ footer{
 .week .week-photo,.week .timeline,.week .section-label,.week .week-intro-mark{position:relative;z-index:14!important;}
 @media(max-width:700px){.week .video-weekfestival-one{opacity:.76!important}.week .video-weekfestival-two{opacity:.30!important;}}
 @media(prefers-reduced-motion:reduce){.week .video-weekfestival{display:none!important;}}
+
+
+/* SUPPLIED CALUYA MAP IMAGE — replace the draft SVG with the uploaded artwork */
+.caluya-map{
+  position:relative!important;
+  z-index:4!important;
+  width:100%!important;
+  max-width:1120px!important;
+  margin:0 auto 28px!important;
+  padding:0!important;
+  overflow:hidden!important;
+  border:0!important;
+  border-radius:6px!important;
+  background:#0b4054!important;
+  box-shadow:0 30px 90px rgba(8,40,58,.22)!important;
+}
+.caluya-map img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  max-width:none!important;
+  margin:0!important;
+  object-fit:contain!important;
+}
+@media(max-width:700px){
+  .caluya-map{
+    width:100%!important;
+    margin:0 auto 22px!important;
+    border-radius:4px!important;
+  }
+  .caluya-map img{
+    width:100%!important;
+    height:auto!important;
+  }
+}
