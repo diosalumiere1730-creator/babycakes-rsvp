@@ -172,7 +172,7 @@
   restore();
 
 
-  // Opening envelope: a short physical open, then a continuous crossfade into the invitation.
+  // Opening: use the supplied envelope artwork directly. No synthetic envelope.
   const gate = document.querySelector("#envelope-gate");
   const envelopeTrigger = document.querySelector("#envelope-trigger");
   const protectedLayers = [
@@ -192,26 +192,18 @@
       if (gate.classList.contains("is-opening")) return;
       gate.classList.add("is-opening");
       envelopeTrigger.setAttribute("aria-disabled", "true");
-      window.scrollTo({top:0,left:0,behavior:"auto"});
-      document.querySelector("#top .hero")?.classList.add("visible");
       document.body.classList.remove("invitation-locked");
-
       protectedLayers.forEach(layer => {
         layer.removeAttribute("inert");
         layer.removeAttribute("aria-hidden");
       });
-
-      // Hold the cover until the hero is ready, then remove it cleanly.
       window.setTimeout(() => {
         gate.remove();
         document.querySelector("#top")?.focus?.({preventScroll:true});
-      }, 2250);
+      }, 1550);
     };
 
-    envelopeTrigger.addEventListener("click", event => {
-      event.preventDefault();
-      openInvitation();
-    });
+    envelopeTrigger.addEventListener("click", openInvitation);
     envelopeTrigger.addEventListener("keydown", event => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
