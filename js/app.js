@@ -209,6 +209,8 @@
       if (opened || gate.classList.contains("is-playing")) return;
       gate.classList.add("is-playing");
       trigger.setAttribute("aria-disabled", "true");
+      window.scrollTo({top:0,left:0,behavior:"auto"});
+      document.querySelector("#top .hero")?.classList.add("visible");
       try {
         await intro.play();
       } catch (_) {
@@ -216,6 +218,19 @@
         trigger.removeAttribute("aria-disabled");
       }
     };
+
+    intro.addEventListener("timeupdate", () => {
+      if (!intro.duration || gate.classList.contains("is-finishing")) return;
+      // Begin the handoff before the last frame so the ending never feels like a hard cut.
+      if (intro.duration - intro.currentTime <= 2.6) {
+        gate.classList.add("is-finishing");
+        document.body.classList.remove("invitation-locked");
+        protectedLayers.forEach(layer => {
+          layer.removeAttribute("inert");
+          layer.removeAttribute("aria-hidden");
+        });
+      }
+    });
 
     intro.addEventListener("ended", finish);
     trigger.addEventListener("click", playIntro);
