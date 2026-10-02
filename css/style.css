@@ -2426,3 +2426,116 @@ body .skip-link{
   .envelope-gate:after{transition:none!important;opacity:1;transform:none;clip-path:none}
   .envelope-gate.is-opening .envelope-stage{transition:none!important}
 }
+
+/* USER REFERENCE ENVELOPE — soft editorial paper + ocean insert */
+.envelope-cinema-film{display:none!important}
+.envelope-gate{
+  background:#eee6d8!important;
+  overflow:hidden!important;
+}
+.envelope-gate:before{
+  z-index:0!important;
+  opacity:1!important;
+  background:
+    radial-gradient(circle at 7% 10%,rgba(255,255,255,.98) 0 2.2%,transparent 2.5%),
+    radial-gradient(circle at 10% 7%,rgba(255,255,255,.92) 0 1.4%,transparent 1.8%),
+    radial-gradient(circle at 5% 16%,rgba(247,245,231,.95) 0 1.9%,transparent 2.3%),
+    radial-gradient(circle at 94% 88%,rgba(224,231,207,.85) 0 1.6%,transparent 2%),
+    radial-gradient(circle at 90% 92%,rgba(231,236,215,.9) 0 2.2%,transparent 2.6%),
+    radial-gradient(circle at 50% 46%,rgba(255,255,255,.28),transparent 45%);
+}
+.envelope-trigger{
+  width:min(92vw,760px)!important;
+  min-height:100vh!important;
+  padding:36px 24px 58px!important;
+  gap:0!important;
+  justify-content:center!important;
+}
+.envelope-stage{
+  width:min(68vw,620px)!important;
+  aspect-ratio:1.48!important;
+  margin:0!important;
+  filter:drop-shadow(0 25px 35px rgba(95,78,57,.12))!important;
+}
+.envelope-shadow{
+  bottom:-11%!important;
+  width:78%!important;
+  left:11%!important;
+  height:15%!important;
+  background:rgba(84,70,53,.16)!important;
+  filter:blur(22px)!important;
+}
+.envelope-paper{
+  background:#fbfaf5!important;
+  border:1px solid rgba(92,83,68,.12)!important;
+  box-shadow:0 26px 60px rgba(92,83,68,.13)!important;
+}
+.envelope-letter{
+  left:18%!important;
+  right:18%!important;
+  top:5%!important;
+  height:74%!important;
+  padding:0!important;
+  background:
+    linear-gradient(180deg,rgba(250,248,238,.05),rgba(250,248,238,.18)),
+    url("https://images.unsplash.com/photo-1769540209420-f137f98194e8?auto=format&fit=crop&w=1200&q=78") center 58%/cover no-repeat!important;
+  color:transparent!important;
+  clip-path:polygon(50% 0,100% 54%,50% 100%,0 54%)!important;
+  box-shadow:0 8px 24px rgba(63,84,82,.10)!important;
+  transform:translateY(34%) scale(.96)!important;
+}
+.envelope-letter:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(255,252,238,.28),rgba(255,252,238,.02) 48%,rgba(235,216,177,.24));
+  pointer-events:none;
+}
+.letter-monogram,.letter-rule,.letter-small,.envelope-letter strong{display:none!important}
+.envelope-pocket{
+  height:76%!important;
+  background:linear-gradient(145deg,#fffefa,#f0ece3)!important;
+  clip-path:polygon(0 0,50% 49%,100% 0,100% 100%,0 100%)!important;
+}
+.envelope-flap{
+  background:linear-gradient(180deg,#fffefa,#f2eee6)!important;
+  height:72%!important;
+}
+.envelope-seal{
+  width:54px!important;
+  height:54px!important;
+  background:#f8f5ec!important;
+  border:1px solid rgba(130,115,88,.24)!important;
+  color:#b8a789!important;
+  box-shadow:0 5px 15px rgba(84,70,53,.12)!important;
+  font-size:0!important;
+}
+.envelope-seal:after{
+  content:"B";
+  font:500 24px/1 "Cormorant Garamond",serif;
+}
+.envelope-kicker,.envelope-title,.envelope-hint{display:none!important}
+.envelope-trigger:hover .envelope-paper{
+  transform:translateY(-5px)!important;
+  box-shadow:0 32px 70px rgba(92,83,68,.17)!important;
+}
+.envelope-trigger:hover .envelope-shadow{transform:scale(.96)!important}
+.envelope-gate.is-opening:before{
+  opacity:0!important;
+  transition:opacity .9s ease .2s!important;
+}
+.envelope-gate.is-opening .envelope-stage{
+  opacity:0!important;
+  transform:scale(.93) translateY(-22px)!important;
+  filter:blur(1px)!important;
+  transition:opacity .72s ease .32s,transform 1.2s cubic-bezier(.16,1,.3,1) .25s,filter .72s ease .32s!important;
+}
+.envelope-gate.is-opening .envelope-letter{
+  transform:translateY(-45%) scale(1.04)!important;
+  transition-delay:.18s!important;
+}
+@media(max-width:700px){
+  .envelope-trigger{width:100vw!important;padding:24px 14px 38px!important}
+  .envelope-stage{width:min(86vw,390px)!important}
+  .envelope-letter{left:18%!important;right:18%!important}
+}
