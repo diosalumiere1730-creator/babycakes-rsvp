@@ -75,5 +75,22 @@
 </section>
 </main>
 <footer><div class="footer-mark">B</div><div><p>BABYCAKES · CALUYA ISLAND · MAY 2028</p><p>PRELIM RSVP · FINAL RSVP TO FOLLOW</p><details class="media-credits"><summary>Moving image sources</summary><p>Sun reflections and gentle waves — <a href="https://mixkit.co/free-stock-video/sun-reflections-and-gentle-waves-in-the-beach-25163/" target="_blank" rel="noopener">Mixkit source</a><br>Beach / sand / waves / sunset — <a href="https://pixabay.com/videos/beach-sand-waves-ocean-sunset-77928/" target="_blank" rel="noopener">Pixabay source</a><br>Couple / love / lovers — <a href="https://pixabay.com/videos/couple-love-lovers-nature-together-327150/" target="_blank" rel="noopener">Pixabay source</a><br>AI wedding / beach — <a href="https://pixabay.com/videos/ai-generated-wedding-marriage-beach-375029/" target="_blank" rel="noopener">Pixabay source</a><br>Beach sunset MP4 — <a href="https://pixabay.com/videos/download/video-77928_medium.mp4" target="_blank" rel="noopener">Pixabay file</a><br>Couple MP4 — <a href="https://pixabay.com/videos/download/video-327150_medium.mp4" target="_blank" rel="noopener">Pixabay file</a><br>Wedding MP4 — <a href="https://pixabay.com/videos/download/video-375029_medium.mp4" target="_blank" rel="noopener">Pixabay file</a><br>Gentle waves MP4 — <a href="https://assets.mixkit.co/videos/25163/25163-720.mp4" target="_blank" rel="noopener">Mixkit file</a><br>White roses / greenery — <a href="https://www.shutterstock.com/video/clip-3921305875-stunning-floral-arrangement-featuring-white-roses-greenery" target="_blank" rel="noopener">Shutterstock source</a><br>Islamorada / tropical coast — <a href="https://www.shutterstock.com/video/clip-3822779273-islamorada--florida-united-states---04" target="_blank" rel="noopener">Shutterstock source</a><br>Festival fire-show footage 6559415 — <a href="https://www.shutterstock.com/shutterstock/videos/6559415/preview/stock-footage-panglao-philippines-february-fire-show-festival-at-the-beach-unidentified-man.webm" target="_blank" rel="noopener">Shutterstock WebM</a><br>Festival fire-show footage 6115532 — <a href="https://www.shutterstock.com/shutterstock/videos/6115532/preview/stock-footage-panglao-philippines-february-fire-show-festival-at-the-beach-unidentified-man.webm" target="_blank" rel="noopener">Shutterstock WebM</a></p></details></div><a href="#top">Back to top ↑</a></footer>
-<script src="data/content.js"></script><script src="js/app.js"></script>
+<script src="data/content.js"></script>
+<script>
+(() => {
+  const gate = document.getElementById("envelope-gate");
+  const trigger = document.getElementById("envelope-trigger");
+  if (!gate || !trigger) return;
+  const open = () => {
+    gate.classList.add("is-opening");
+    document.body.classList.remove("invitation-locked");
+    window.setTimeout(() => gate.remove(), 950);
+  };
+  trigger.addEventListener("click", open);
+  trigger.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); }
+  });
+})();
+</script>
+<script src="js/app.js?v=20261002v2"></script>
 </body></html>
