@@ -2664,3 +2664,63 @@ body .skip-link{
 @media(max-width:700px){
   .opening-artwork{object-position:center center!important;}
 }
+
+
+/* CLICK-TO-OPEN REBUILD — the artwork is the invitation cover; clicking it drives a cinematic opening. */
+.envelope-gate{
+  position:fixed!important;
+  inset:0!important;
+  z-index:9999!important;
+  pointer-events:auto!important;
+  opacity:1!important;
+  visibility:visible!important;
+  background:#efe6d7!important;
+}
+.envelope-trigger{
+  position:relative!important;
+  display:block!important;
+  width:100vw!important;
+  height:100vh!important;
+  min-height:100vh!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  outline:0!important;
+  pointer-events:auto!important;
+  cursor:pointer!important;
+  touch-action:manipulation!important;
+  overflow:hidden!important;
+}
+.opening-artwork{
+  will-change:transform,opacity,filter!important;
+  transform-origin:50% 48%!important;
+  transition:none!important;
+}
+.envelope-gate.is-opening .opening-artwork{
+  animation:opening-envelope-cinematic 1.8s cubic-bezier(.16,1,.3,1) forwards!important;
+}
+@keyframes opening-envelope-cinematic{
+  0%{transform:scale(1);opacity:1;filter:brightness(1) saturate(1)}
+  42%{transform:scale(1.035);opacity:1;filter:brightness(1.03) saturate(1.04)}
+  72%{transform:scale(1.13);opacity:.98;filter:brightness(1.08) saturate(1.08)}
+  100%{transform:scale(1.24);opacity:0;filter:brightness(1.18) saturate(1.1)}
+}
+.envelope-gate.is-opening:after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:4!important;
+  pointer-events:none!important;
+  background:radial-gradient(circle at 50% 47%,rgba(255,255,255,.28),rgba(255,255,255,0) 42%)!important;
+  opacity:0!important;
+  animation:opening-light 1.8s ease forwards!important;
+}
+@keyframes opening-light{
+  0%,55%{opacity:0}
+  72%{opacity:.18}
+  100%{opacity:1}
+}
+.envelope-cinema-film,.envelope-stage,.envelope-kicker,.envelope-title,.envelope-hint{display:none!important}
+@media(max-width:700px){
+  .opening-artwork{object-position:center center!important;}
+}
