@@ -2930,3 +2930,7 @@ body .skip-link{
 @media(prefers-reduced-motion:reduce){
   .opening-play-cue{display:none!important;}
 }
+
+
+/* Remove the old static envelope artwork completely. The uploaded intro video is the only opening visual. */
+.opening-artwork{display:none!important;}
