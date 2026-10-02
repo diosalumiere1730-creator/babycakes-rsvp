@@ -2934,3 +2934,26 @@ body .skip-link{
 
 /* Remove the old static envelope artwork completely. The uploaded intro video is the only opening visual. */
 .opening-artwork{display:none!important;}
+
+
+/* Slow cinematic handoff from the uploaded intro into the invitation. */
+.envelope-gate{
+  transition:opacity 2.6s cubic-bezier(.22,.75,.18,1),visibility 0s linear 2.6s!important;
+}
+.envelope-gate.is-finishing{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+.envelope-gate.is-finishing .opening-intro-video{
+  opacity:0!important;
+  transform:scale(1.025)!important;
+  transition:opacity 2.6s cubic-bezier(.22,.75,.18,1),transform 2.6s cubic-bezier(.16,1,.3,1)!important;
+}
+.envelope-gate.is-finishing .opening-play-cue{
+  opacity:0!important;
+}
+#top .hero.visible{
+  opacity:1!important;
+  transform:none!important;
+}
