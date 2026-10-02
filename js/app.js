@@ -170,4 +170,47 @@
   });
 
   restore();
+
+
+  // Opening envelope: keep the invitation completely covered until the guest chooses to enter.
+  const gate = document.querySelector("#envelope-gate");
+  const envelopeTrigger = document.querySelector("#envelope-trigger");
+  const protectedLayers = [
+    document.querySelector(".skip-link"),
+    document.querySelector(".topbar"),
+    document.querySelector(".mobile-nav"),
+    document.querySelector("#top")
+  ].filter(Boolean);
+
+  if (gate && envelopeTrigger) {
+    protectedLayers.forEach(layer => {
+      layer.setAttribute("inert", "");
+      layer.setAttribute("aria-hidden", "true");
+    });
+
+    const openInvitation = () => {
+      if (gate.classList.contains("is-opening")) return;
+      gate.classList.add("is-opening");
+      document.body.classList.remove("invitation-locked");
+
+      protectedLayers.forEach(layer => {
+        layer.removeAttribute("inert");
+        layer.removeAttribute("aria-hidden");
+      });
+
+      window.setTimeout(() => {
+        gate.remove();
+        document.querySelector("#top")?.focus?.({preventScroll:true});
+      }, 950);
+    };
+
+    envelopeTrigger.addEventListener("click", openInvitation);
+    envelopeTrigger.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openInvitation();
+      }
+    });
+  }
+
 })();
