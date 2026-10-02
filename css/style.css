@@ -1680,3 +1680,127 @@ footer{
   .week .timeline{position:relative!important;top:auto!important;left:auto!important;right:auto!important;min-height:auto!important;padding:40px 20px!important;}
   .week .week-intro-mark,.week .section-label{position:relative!important;top:auto!important;left:auto!important;margin-left:20px!important;}
 }
+
+
+/* WEEK — HARD SPLIT: two actual viewport-height film frames */
+.week{
+  position:relative!important;
+  height:200vh!important;
+  min-height:200vh!important;
+  max-height:none!important;
+  overflow:hidden!important;
+  padding:0!important;
+  background:#071f2b!important;
+  isolation:isolate!important;
+  z-index:20!important;
+}
+.week:before{display:none!important;}
+.week .video-weekfestival{
+  display:block!important;
+  position:absolute!important;
+  left:0!important;
+  right:0!important;
+  width:100%!important;
+  height:100vh!important;
+  min-height:100vh!important;
+  max-height:100vh!important;
+  margin:0!important;
+  padding:0!important;
+  border-radius:0!important;
+  overflow:hidden!important;
+  z-index:1!important;
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:none!important;
+}
+.week .video-weekfestival-one{top:0!important;bottom:auto!important;}
+.week .video-weekfestival-two{top:100vh!important;bottom:auto!important;}
+.week .video-weekfestival video{
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-width:100%!important;
+  min-height:100%!important;
+  object-fit:cover!important;
+  z-index:1!important;
+  opacity:1!important;
+  visibility:visible!important;
+  filter:saturate(1.12) contrast(1.06)!important;
+}
+.week .video-weekfestival-one:after,
+.week .video-weekfestival-two:after{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:2!important;
+  background:linear-gradient(180deg,rgba(4,23,32,.16),rgba(4,23,32,.03) 50%,rgba(4,23,32,.26))!important;
+  pointer-events:none!important;
+}
+.week .video-weekfestival-two:after{
+  background:linear-gradient(180deg,rgba(4,23,32,.26),rgba(4,23,32,.03) 50%,rgba(4,23,32,.32))!important;
+}
+.week .week-intro-mark{
+  top:34px!important;
+  left:clamp(20px,5vw,76px)!important;
+  right:auto!important;
+  z-index:15!important;
+  color:rgba(255,250,240,.86)!important;
+  text-shadow:0 2px 14px rgba(0,0,0,.32)!important;
+}
+.week .section-label{
+  position:absolute!important;
+  top:72px!important;
+  left:clamp(20px,5vw,76px)!important;
+  z-index:15!important;
+  margin:0!important;
+  color:#fffaf0!important;
+  text-shadow:0 2px 12px rgba(0,0,0,.35)!important;
+}
+.week .timeline{
+  position:absolute!important;
+  top:100vh!important;
+  left:clamp(18px,8vw,140px)!important;
+  right:clamp(18px,8vw,140px)!important;
+  width:auto!important;
+  min-height:100vh!important;
+  height:100vh!important;
+  margin:0!important;
+  padding:clamp(90px,12vh,150px) 0 60px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  z-index:15!important;
+}
+.week .timeline-item{
+  background:rgba(244,238,227,.78)!important;
+  color:var(--film-ink)!important;
+  backdrop-filter:blur(9px)!important;
+  -webkit-backdrop-filter:blur(9px)!important;
+  box-shadow:0 14px 40px rgba(4,23,32,.20)!important;
+}
+.week .week-photo{display:none!important;}
+@media(max-width:700px){
+  .week{
+    height:200svh!important;
+    min-height:200svh!important;
+  }
+  .week .video-weekfestival{
+    height:100svh!important;
+    min-height:100svh!important;
+    max-height:100svh!important;
+  }
+  .week .video-weekfestival-two{top:100svh!important;}
+  .week .week-intro-mark{top:26px!important;left:18px!important;}
+  .week .section-label{top:58px!important;left:18px!important;}
+  .week .timeline{
+    top:100svh!important;
+    height:100svh!important;
+    min-height:100svh!important;
+    left:14px!important;
+    right:14px!important;
+    padding:76px 0 28px!important;
+  }
+}
