@@ -175,6 +175,7 @@
   // Opening envelope: keep the invitation completely covered until the guest chooses to enter.
   const gate = document.querySelector("#envelope-gate");
   const envelopeTrigger = document.querySelector("#envelope-trigger");
+  const cinematicVideo = gate?.querySelector(".envelope-cinema-video");
   const protectedLayers = [
     document.querySelector(".skip-link"),
     document.querySelector(".topbar"),
@@ -193,6 +194,14 @@
       gate.classList.add("is-opening");
       document.body.classList.remove("invitation-locked");
 
+      if (cinematicVideo) {
+        try {
+          cinematicVideo.currentTime = 0;
+          cinematicVideo.playbackRate = 1.18;
+          cinematicVideo.play().catch(() => {});
+        } catch (_) {}
+      }
+
       protectedLayers.forEach(layer => {
         layer.removeAttribute("inert");
         layer.removeAttribute("aria-hidden");
@@ -201,7 +210,7 @@
       window.setTimeout(() => {
         gate.remove();
         document.querySelector("#top")?.focus?.({preventScroll:true});
-      }, 9000);
+      }, 10500);
     };
 
     envelopeTrigger.addEventListener("click", openInvitation);
