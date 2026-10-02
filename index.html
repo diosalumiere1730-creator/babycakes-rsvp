@@ -43,34 +43,41 @@
 <div class="section-label">04 · STAY WITH US</div>
 <div class="stay-intro"><p class="display">Find your place<br><em>on the island.</em></p><p class="body-copy">We've gathered the places we're exploring for wedding week. Final rooming and booking details will follow with the Final RSVP.</p></div>
 <div class="caluya-map" role="img" aria-label="Stylized illustrated Caluya Island accommodation map showing La Isla, Lola Cadyang, Melboy House, Island Tourist Inn, Imba, Labiga, Pier, and Poblacion.">
-<svg viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<svg viewBox="0 0 1100 680" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 <defs>
-<linearGradient id="sea" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b4054"/><stop offset=".55" stop-color="#2d7f91"/><stop offset="1" stop-color="#063447"/></linearGradient>
-<linearGradient id="land" x1=".2" y1="0" x2=".8" y2="1"><stop stop-color="#7e9c6c"/><stop offset=".55" stop-color="#496f5c"/><stop offset="1" stop-color="#274e49"/></linearGradient>
-<filter id="soft"><feGaussianBlur stdDeviation="18"/></filter>
+<radialGradient id="water" cx="50%" cy="45%" r="75%"><stop offset="0" stop-color="#5e9ca3"/><stop offset=".55" stop-color="#2f7180"/><stop offset="1" stop-color="#123f51"/></radialGradient>
+<linearGradient id="island" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b0b78a"/><stop offset=".45" stop-color="#708a6b"/><stop offset="1" stop-color="#47645a"/></linearGradient>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#082d3c" flood-opacity=".28"/></filter>
+<filter id="paper"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="4"/><feColorMatrix values="0 0 0 0 .9 0 0 0 0 .86 0 0 0 0 .72 0 0 0 .10 0"/></filter>
 </defs>
-<rect width="1200" height="760" rx="2" fill="url(#sea)"/>
-<g opacity=".16" fill="none" stroke="#d9f0e9" stroke-width="2"><path d="M0 130C190 50 300 210 470 130S780 50 1200 150"/><path d="M0 610C190 530 330 690 510 590S850 520 1200 630"/><path d="M50 320C220 250 300 390 470 310S780 240 1140 350"/></g>
-<path d="M190 420C205 325 285 250 390 215C485 182 535 118 655 148C760 176 798 238 900 250C1008 264 1048 350 984 433C936 495 1012 553 931 621C824 712 677 625 583 646C482 668 401 604 310 617C213 630 158 544 190 420Z" fill="url(#land)" stroke="#d8c99f" stroke-width="5"/>
-<g fill="none" stroke="#d9c99c" stroke-width="4" opacity=".75"><path d="M320 500C390 445 440 365 520 345C600 325 680 285 735 220"/><path d="M520 345C580 400 650 430 735 430C820 430 875 390 936 340"/><path d="M585 585C625 525 660 485 735 430"/></g>
-<g fill="#d9d0b3" stroke="#173847" stroke-width="4">
-<circle cx="620" cy="250" r="10"/><circle cx="390" cy="370" r="10"/><circle cx="770" cy="325" r="10"/><circle cx="635" cy="425" r="10"/><circle cx="435" cy="510" r="10"/><circle cx="880" cy="485" r="10"/><circle cx="700" cy="600" r="10"/><circle cx="890" cy="585" r="10"/>
+<rect width="1100" height="680" fill="url(#water)"/>
+<g fill="none" stroke="#dce9df" opacity=".18" stroke-width="2">
+<path d="M-40 145C150 50 245 195 415 115S730 48 1140 155"/>
+<path d="M-40 510C120 430 270 565 420 495S760 410 1140 530"/>
+<path d="M60 300C210 235 330 340 490 275S800 225 1060 315"/>
+</g>
+<g opacity=".2" fill="#dbe7dc"><circle cx="125" cy="170" r="3"/><circle cx="960" cy="170" r="3"/><circle cx="1010" cy="450" r="2"/><circle cx="180" cy="555" r="2"/></g>
+<path d="M180 365C183 285 235 226 315 203C392 180 437 116 526 135C603 151 645 203 722 210C810 218 890 262 889 338C888 402 842 432 866 486C890 541 827 585 748 579C677 574 627 619 548 596C470 574 416 601 347 575C279 549 228 512 207 455C193 417 176 400 180 365Z" fill="#173f4a" opacity=".28" filter="url(#shadow)"/>
+<path d="M160 340C166 259 220 211 303 188C383 166 428 104 516 126C596 146 638 190 716 198C804 207 875 250 878 323C881 386 828 420 853 472C879 527 814 568 737 562C663 556 616 603 535 580C457 559 401 586 333 558C265 530 216 492 194 436C179 397 157 380 160 340Z" fill="url(#island)" stroke="#e7d6a4" stroke-width="4"/>
+<path d="M235 401C330 350 355 267 438 240C508 218 584 247 654 228C711 212 759 237 800 277" fill="none" stroke="#d8cf9c" stroke-width="3" opacity=".75"/>
+<path d="M350 503C390 439 448 410 501 374C554 338 608 326 666 337C722 347 758 333 807 302" fill="none" stroke="#d8cf9c" stroke-width="3" opacity=".75"/>
+<path d="M515 570C525 515 563 472 617 443C663 419 707 406 747 364" fill="none" stroke="#d8cf9c" stroke-width="2" opacity=".6"/>
+<g fill="#e6dcc0" stroke="#234652" stroke-width="3">
+<circle cx="500" cy="190" r="9"/><circle cx="294" cy="302" r="9"/><circle cx="700" cy="259" r="9"/><circle cx="541" cy="349" r="9"/><circle cx="354" cy="450" r="9"/><circle cx="792" cy="416" r="9"/><circle cx="616" cy="545" r="9"/><circle cx="790" cy="515" r="9"/>
 </g>
 <g font-family="Georgia,serif" fill="#173847">
-<g><rect x="555" y="180" width="150" height="58" rx="8" fill="#f4eee3" opacity=".94"/><text x="630" y="205" text-anchor="middle" font-size="18" letter-spacing="2">LA ISLA</text><text x="630" y="226" text-anchor="middle" font-size="14">20 pax</text></g>
-<g><rect x="300" y="300" width="170" height="58" rx="8" fill="#f4eee3" opacity=".94"/><text x="385" y="325" text-anchor="middle" font-size="17" letter-spacing="1.5">LOLA CADYANG</text><text x="385" y="346" text-anchor="middle" font-size="14">10 pax</text></g>
-<g><rect x="705" y="255" width="175" height="58" rx="8" fill="#f4eee3" opacity=".94"/><text x="792" y="280" text-anchor="middle" font-size="17" letter-spacing="1">MELBOY HOUSE</text><text x="792" y="301" text-anchor="middle" font-size="14">20 pax</text></g>
-<g><rect x="555" y="365" width="190" height="62" rx="8" fill="#f4eee3" opacity=".96"/><text x="650" y="392" text-anchor="middle" font-size="16" letter-spacing="1">ISLAND TOURIST INN</text><text x="650" y="414" text-anchor="middle" font-size="14">150 pax</text></g>
-<g><rect x="350" y="455" width="130" height="58" rx="8" fill="#f4eee3" opacity=".94"/><text x="415" y="480" text-anchor="middle" font-size="18" letter-spacing="2">IMBA</text><text x="415" y="501" text-anchor="middle" font-size="14">15 pax</text></g>
-<g><rect x="835" y="430" width="125" height="58" rx="8" fill="#f4eee3" opacity=".94"/><text x="897" y="455" text-anchor="middle" font-size="18" letter-spacing="2">LABIGA</text><text x="897" y="476" text-anchor="middle" font-size="14">TBD</text></g>
-<g><rect x="650" y="625" width="105" height="55" rx="8" fill="#f4eee3" opacity=".94"/><text x="702" y="649" text-anchor="middle" font-size="18" letter-spacing="2">PIER</text><text x="702" y="668" text-anchor="middle" font-size="14">TBD</text></g>
-<g><rect x="845" y="610" width="145" height="58" rx="8" fill="#f4eee3" opacity=".94"/><text x="917" y="635" text-anchor="middle" font-size="17" letter-spacing="2">POBLACION</text><text x="917" y="656" text-anchor="middle" font-size="14">TBD</text></g>
+<g><rect x="424" y="137" width="150" height="53" rx="26" fill="#f4eee3"/><text x="499" y="160" text-anchor="middle" font-size="17" letter-spacing="2">LA ISLA</text><text x="499" y="179" text-anchor="middle" font-size="13" font-style="italic">20 pax</text></g>
+<g><rect x="207" y="248" width="174" height="53" rx="26" fill="#f4eee3"/><text x="294" y="271" text-anchor="middle" font-size="16" letter-spacing="1.5">LOLA CADYANG</text><text x="294" y="290" text-anchor="middle" font-size="13" font-style="italic">10 pax</text></g>
+<g><rect x="633" y="206" width="176" height="53" rx="26" fill="#f4eee3"/><text x="721" y="229" text-anchor="middle" font-size="16" letter-spacing="1">MELBOY HOUSE</text><text x="721" y="248" text-anchor="middle" font-size="13" font-style="italic">20 pax</text></g>
+<g><rect x="446" y="320" width="192" height="57" rx="28" fill="#f4eee3"/><text x="542" y="344" text-anchor="middle" font-size="15" letter-spacing="1">ISLAND TOURIST INN</text><text x="542" y="364" text-anchor="middle" font-size="13" font-style="italic">150 pax</text></g>
+<g><rect x="288" y="421" width="132" height="53" rx="26" fill="#f4eee3"/><text x="354" y="444" text-anchor="middle" font-size="17" letter-spacing="2">IMBA</text><text x="354" y="463" text-anchor="middle" font-size="13" font-style="italic">15 pax</text></g>
+<g><rect x="724" y="388" width="135" height="53" rx="26" fill="#f4eee3"/><text x="791" y="411" text-anchor="middle" font-size="17" letter-spacing="2">LABIGA</text><text x="791" y="430" text-anchor="middle" font-size="13" font-style="italic">TBD</text></g>
+<g><rect x="554" y="562" width="124" height="53" rx="26" fill="#f4eee3"/><text x="616" y="585" text-anchor="middle" font-size="17" letter-spacing="2">PIER</text><text x="616" y="604" text-anchor="middle" font-size="13" font-style="italic">TBD</text></g>
+<g><rect x="721" y="492" width="150" height="53" rx="26" fill="#f4eee3"/><text x="796" y="515" text-anchor="middle" font-size="16" letter-spacing="1.5">POBLACION</text><text x="796" y="534" text-anchor="middle" font-size="13" font-style="italic">TBD</text></g>
 </g>
-<g fill="#f4eee3" opacity=".9"><circle cx="1030" cy="120" r="2"/><circle cx="1060" cy="150" r="3"/><circle cx="1088" cy="110" r="2"/><circle cx="130" cy="185" r="3"/></g>
-<text x="1035" y="65" fill="#f4eee3" font-family="Georgia,serif" font-size="26" letter-spacing="7">CALUYA ISLAND</text>
-<text x="1040" y="92" fill="#d9c99c" font-family="DM Sans,sans-serif" font-size="12" letter-spacing="5">ANTIQUE · PHILIPPINES</text>
-</svg>
-</div>
+<g fill="#f4eee3" font-family="Georgia,serif"><text x="850" y="72" font-size="24" letter-spacing="6">CALUYA ISLAND</text><text x="853" y="97" font-family="DM Sans,sans-serif" font-size="11" letter-spacing="4" opacity=".8">ANTIQUE · PHILIPPINES</text></g>
+<g transform="translate(1000 580)" stroke="#f4eee3" fill="none" opacity=".8"><circle r="30"/><path d="M0-42V42M-42 0H42M0-42L6-18L0-7L-6-18Z" fill="#f4eee3"/><text x="0" y="57" text-anchor="middle" fill="#f4eee3" stroke="none" font-family="DM Sans,sans-serif" font-size="10" letter-spacing="2">N</text></g>
+</svg></div>
 <div class="capacity-note"><strong>215 pax</strong><span>currently identified capacity</span></div>
 <p class="stay-note">More accommodation details will be added before the Final RSVP.</p>
 </section>
