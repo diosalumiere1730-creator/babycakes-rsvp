@@ -1978,3 +1978,39 @@ body.invitation-locked{
   .envelope-gate,.envelope-flap,.envelope-paper,.envelope-seal,.envelope-shadow{transition:none!important;}
   .envelope-gate.is-opening .envelope-flap{transform:none!important;}
 }
+
+
+/* ENVELOPE — zero-JavaScript fallback: the invitation opens through a native checkbox */
+.envelope-open-toggle{
+  position:fixed!important;
+  width:1px!important;
+  height:1px!important;
+  opacity:0!important;
+  pointer-events:none!important;
+  z-index:-1!important;
+}
+body:has(#envelope-open:checked){
+  overflow:auto!important;
+  height:auto!important;
+}
+#envelope-open:checked ~ .envelope-gate{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transition:opacity 900ms cubic-bezier(.2,.7,.2,1),visibility 0s linear 900ms!important;
+}
+#envelope-open:checked ~ .envelope-gate .envelope-flap{
+  transform:rotateX(-178deg)!important;
+}
+#envelope-open:checked ~ .envelope-gate .envelope-seal{
+  opacity:0!important;
+  transform:translate(-50%,-70%) scale(.7)!important;
+}
+#envelope-open:checked ~ .envelope-gate .envelope-paper{
+  animation:envelope-lift 850ms cubic-bezier(.2,.7,.2,1) both!important;
+}
+.envelope-trigger{
+  cursor:pointer!important;
+  user-select:none!important;
+  -webkit-tap-highlight-color:transparent!important;
+}
