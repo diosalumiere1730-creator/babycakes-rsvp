@@ -1506,3 +1506,18 @@ footer{
 @media(prefers-reduced-motion:reduce){
   .video-caluyashutterstock,.video-weekdrone,.video-weeksetup,.video-flowers{display:none!important;}
 }
+
+
+/* ILLUSTRATED CALUYA STAY MAP */
+.stay{position:relative;overflow:hidden;}
+.stay-intro{position:relative;z-index:5;}
+.caluya-map{position:relative;z-index:4;margin:34px 0 26px;border:1px solid rgba(244,238,227,.3);box-shadow:0 24px 70px rgba(8,40,58,.18);overflow:hidden;background:#0b4054;}
+.caluya-map svg{display:block;width:100%;height:auto;}
+.caluya-map:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(244,238,227,.08),transparent 32%,transparent 70%,rgba(8,40,58,.12));mix-blend-mode:soft-light;}
+.stay .capacity-note{position:relative;z-index:5;margin-top:14px;}
+.stay-note{position:relative;z-index:5;margin:14px 0 0;font-family:"Cormorant Garamond",serif;font-size:20px;font-style:italic;color:rgba(23,56,71,.72);}
+@media(max-width:700px){
+ .caluya-map{margin-top:24px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+ .caluya-map svg{width:980px;max-width:none;}
+ .stay-note{font-size:18px;}
+}
