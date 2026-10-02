@@ -25,8 +25,9 @@
 <script>document.documentElement.classList.add("js");</script>
 </head>
 <body class="invitation-locked">
+<input class="envelope-open-toggle" id="envelope-open" type="checkbox" aria-label="Open wedding invitation">
 <div class="envelope-gate" id="envelope-gate" role="dialog" aria-modal="true" aria-label="Open the wedding invitation">
-  <button class="envelope-trigger" id="envelope-trigger" type="button" aria-label="Open the wedding invitation">
+  <label class="envelope-trigger" id="envelope-trigger" for="envelope-open" tabindex="0" role="button" aria-label="Open the wedding invitation">
     <span class="envelope-stage" aria-hidden="true">
       <span class="envelope-shadow"></span>
       <span class="envelope-paper">
@@ -38,7 +39,7 @@
     <span class="envelope-kicker">BABYCAKES · CALUYA ISLAND</span>
     <span class="envelope-title">Open our invitation</span>
     <span class="envelope-hint">Click to begin</span>
-  </button>
+  </label>
 </div>
 <a class="skip-link" href="#top">Skip to invitation</a>
 <div class="grain"></div>
