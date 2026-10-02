@@ -2137,3 +2137,133 @@ body:has(#envelope-open:checked){
   #envelope-open:checked ~ .envelope-gate .envelope-letter{transform:translateY(-25%)!important;transition:none!important;}
   #envelope-open:checked ~ .envelope-gate .envelope-flap{transition:none!important;}
 }
+
+
+/* CINEMATIC ENVELOPE FILM — sprite-based motion, seamless handoff to the hero */
+.envelope-cinema-film{
+  position:fixed!important;
+  inset:0!important;
+  z-index:8!important;
+  overflow:hidden!important;
+  pointer-events:none!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  background:#091f2b!important;
+  isolation:isolate!important;
+}
+.envelope-cinema-film:after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:20!important;
+  background:
+    radial-gradient(circle at 50% 46%,transparent 22%,rgba(3,17,24,.16) 62%,rgba(3,17,24,.62) 100%),
+    linear-gradient(180deg,rgba(255,255,255,.04),rgba(8,30,40,.10))!important;
+  pointer-events:none!important;
+}
+.cinema-frame{
+  position:absolute!important;
+  inset:0!important;
+  opacity:0!important;
+  background-image:url("https://d2ol7oe51mr4n9.cloudfront.net/user_3JjwfQhEJ9WwA8ByLJoUXgOWoLk/0fcad2d9-d6b5-4627-84dc-6565f7c85d7d.png")!important;
+  background-repeat:no-repeat!important;
+  background-size:300% 300%!important;
+  filter:saturate(.96) contrast(1.05)!important;
+  transform:scale(1.045)!important;
+  will-change:opacity,transform,filter!important;
+}
+.cinema-frame-1{background-position:0 0!important;}
+.cinema-frame-2{background-position:50% 0!important;}
+.cinema-frame-3{background-position:100% 0!important;}
+.cinema-frame-4{background-position:0 50%!important;}
+.cinema-frame-5{background-position:50% 50%!important;}
+.cinema-frame-6{background-position:100% 50%!important;}
+.cinema-frame-7{background-position:0 100%!important;}
+.cinema-frame-8{background-position:50% 100%!important;}
+.cinema-frame-9{background-position:100% 100%!important;}
+.cinema-light{
+  position:absolute!important;
+  inset:-20%!important;
+  z-index:30!important;
+  opacity:0!important;
+  background:radial-gradient(circle at 50% 46%,rgba(255,246,220,.72),rgba(255,246,220,0) 32%)!important;
+  transform:scale(.72)!important;
+  mix-blend-mode:screen!important;
+}
+.envelope-gate.is-opening .envelope-cinema-film,
+#envelope-open:checked ~ .envelope-gate .envelope-cinema-film{
+  opacity:1!important;
+  visibility:visible!important;
+}
+.envelope-gate.is-opening .cinema-frame,
+#envelope-open:checked ~ .envelope-gate .cinema-frame{
+  animation:cinema-frame-rise 1.34s cubic-bezier(.2,.75,.2,1) both!important;
+}
+.envelope-gate.is-opening .cinema-frame-1,
+#envelope-open:checked ~ .envelope-gate .cinema-frame-1{animation-delay:.78s!important;}
+.envelope-gate.is-opening .cinema-frame-2,
+#envelope-open:checked ~ .envelope-gate .cinema-frame-2{animation-delay:1.48s!important;}
+.envelope-gate.is-opening .cinema-frame-3,
+#envelope-open:checked ~ .envelope-gate .cinema-frame-3{animation-delay:2.18s!important;}
+.envelope-gate.is-opening .cinema-frame-4,
+#envelope-open:checked ~ .envelope-gate .cinema-frame-4{animation-delay:2.88s!important;}
+.envelope-gate.is-opening .cinema-frame-5,
+#envelope-open:checked ~ .envelope-gate .cinema-frame-5{animation-delay:3.58s!important;}
+.envelope-gate.is-opening .cinema-frame-6,
+#envelope-open:checked ~ .envelope-gate .cinema-frame-6{animation-delay:4.28s!important;}
+.envelope-gate.is-opening .cinema-frame-7,
+#envelope-open:checked ~ .envelope-gate .cinema-frame-7{animation-delay:4.98s!important;}
+.envelope-gate.is-opening .cinema-frame-8,
+#envelope-open:checked ~ .envelope-gate .cinema-frame-8{animation-delay:5.68s!important;}
+.envelope-gate.is-opening .cinema-frame-9,
+#envelope-open:checked ~ .envelope-gate .cinema-frame-9{animation-delay:6.38s!important;}
+.envelope-gate.is-opening .cinema-light,
+#envelope-open:checked ~ .envelope-gate .cinema-light{
+  animation:cinema-light-sweep 3.2s cubic-bezier(.2,.7,.2,1) 3.2s both!important;
+}
+.envelope-gate.is-opening,
+#envelope-open:checked ~ .envelope-gate{
+  transition:opacity .95s cubic-bezier(.2,.7,.2,1) 7.95s,visibility 0s linear 8.9s!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+.envelope-gate.is-opening .envelope-stage,
+#envelope-open:checked ~ .envelope-gate .envelope-stage{
+  transition:opacity .7s ease 1s,transform 1.1s cubic-bezier(.2,.8,.2,1) 1s!important;
+  opacity:.12!important;
+  transform:scale(.94) translateY(-10px)!important;
+}
+.envelope-gate.is-opening .envelope-kicker,
+.envelope-gate.is-opening .envelope-title,
+.envelope-gate.is-opening .envelope-hint,
+#envelope-open:checked ~ .envelope-gate .envelope-kicker,
+#envelope-open:checked ~ .envelope-gate .envelope-title,
+#envelope-open:checked ~ .envelope-gate .envelope-hint{
+  opacity:0!important;
+  transition:opacity .55s ease .65s!important;
+}
+@keyframes cinema-frame-rise{
+  0%{opacity:0;transform:scale(1.07) translate3d(0,12px,0);filter:saturate(.82) contrast(1.01) blur(2px);}
+  18%{opacity:1;transform:scale(1.045) translate3d(0,4px,0);filter:saturate(.96) contrast(1.05) blur(0);}
+  74%{opacity:1;transform:scale(1.015) translate3d(0,-2px,0);filter:saturate(1.03) contrast(1.06) blur(0);}
+  100%{opacity:0;transform:scale(1.005) translate3d(0,-7px,0);filter:saturate(1.04) contrast(1.06) blur(.2px);}
+}
+@keyframes cinema-light-sweep{
+  0%{opacity:0;transform:scale(.72) translate3d(-9%,3%,0);}
+  25%{opacity:.85;transform:scale(.98) translate3d(2%,0,0);}
+  58%{opacity:.28;transform:scale(1.16) translate3d(8%,-2%,0);}
+  100%{opacity:0;transform:scale(1.3) translate3d(13%,-5%,0);}
+}
+@media(max-width:700px){
+  .cinema-frame{transform:scale(1.13)!important;}
+  @keyframes cinema-frame-rise{
+    0%{opacity:0;transform:scale(1.18) translate3d(0,12px,0);filter:saturate(.82) contrast(1.01) blur(2px);}
+    18%{opacity:1;transform:scale(1.15) translate3d(0,4px,0);filter:saturate(.96) contrast(1.05) blur(0);}
+    74%{opacity:1;transform:scale(1.12) translate3d(0,-2px,0);filter:saturate(1.03) contrast(1.06) blur(0);}
+    100%{opacity:0;transform:scale(1.10) translate3d(0,-7px,0);filter:saturate(1.04) contrast(1.06) blur(.2px);}
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .envelope-cinema-film{display:none!important;}
+}
