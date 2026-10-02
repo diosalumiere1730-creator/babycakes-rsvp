@@ -1521,3 +1521,17 @@ footer{
  .caluya-map svg{width:980px;max-width:none;}
  .stay-note{font-size:18px;}
 }
+
+
+/* CALUYA MAP REFINEMENT */
+.stay{padding-top:clamp(110px,12vw,170px)!important;}
+.stay-intro{margin-bottom:clamp(34px,5vw,60px);}
+.caluya-map{margin:0 auto 28px!important;border:0!important;border-radius:4px!important;box-shadow:0 30px 90px rgba(8,40,58,.22)!important;max-width:1120px!important;}
+.caluya-map svg{width:100%!important;height:auto!important;display:block!important;}
+.stay .capacity-note{margin-top:22px!important;}
+@media(max-width:700px){
+ .stay{padding-top:96px!important;}
+ .stay-intro{margin-bottom:30px;}
+ .caluya-map{overflow:hidden!important;}
+ .caluya-map svg{width:100%!important;min-width:0!important;}
+}
