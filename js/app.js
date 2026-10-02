@@ -191,7 +191,9 @@
     const openInvitation = () => {
       if (gate.classList.contains("is-opening")) return;
       gate.classList.add("is-opening");
-    envelopeTrigger.setAttribute("aria-disabled", "true");
+      envelopeTrigger.setAttribute("aria-disabled", "true");
+      window.scrollTo({top:0,left:0,behavior:"auto"});
+      document.querySelector("#top .hero")?.classList.add("visible");
       document.body.classList.remove("invitation-locked");
 
       protectedLayers.forEach(layer => {
@@ -199,11 +201,11 @@
         layer.removeAttribute("aria-hidden");
       });
 
-      // Let the envelope complete its physical gesture and its 1.05s fade.
+      // Hold the cover until the hero is ready, then remove it cleanly.
       window.setTimeout(() => {
         gate.remove();
         document.querySelector("#top")?.focus?.({preventScroll:true});
-      }, 2050);
+      }, 2250);
     };
 
     envelopeTrigger.addEventListener("click", event => {
