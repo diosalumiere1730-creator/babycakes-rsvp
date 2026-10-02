@@ -1535,3 +1535,13 @@ footer{
  .caluya-map{overflow:hidden!important;}
  .caluya-map svg{width:100%!important;min-width:0!important;}
 }
+
+
+/* WEEK — FESTIVAL FOOTAGE */
+.week .video-weekfestival{position:absolute!important;inset:0!important;border-radius:0!important;z-index:12!important;pointer-events:none!important;visibility:visible!important;}
+.week .video-weekfestival video{position:relative!important;width:100%!important;height:100%!important;object-fit:cover!important;z-index:13!important;opacity:1!important;filter:saturate(1.12) contrast(1.05)!important;}
+.week .video-weekfestival-one{opacity:.88!important;}
+.week .video-weekfestival-two{opacity:.42!important;mix-blend-mode:screen!important;}
+.week .week-photo,.week .timeline,.week .section-label,.week .week-intro-mark{position:relative;z-index:14!important;}
+@media(max-width:700px){.week .video-weekfestival-one{opacity:.76!important}.week .video-weekfestival-two{opacity:.30!important;}}
+@media(prefers-reduced-motion:reduce){.week .video-weekfestival{display:none!important;}}
